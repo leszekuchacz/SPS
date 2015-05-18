@@ -1,0 +1,177 @@
+{% extends 'SpsBundle::layout.html.twig' %} {% block title %} {%
+endblock %} {% block main_opis %}
+<h2>{{ rejon.nazwa}}</h2>
+{% endblock %} {% block body %}
+
+
+
+<article>
+
+	<h3>Mapa traktu:</h3>
+	{% if id_focus is defined %}
+		{{ render (controller('SpsBundle:Map:show',{
+			'id' : rejon.id,
+			'id_mufa_focus' :  id_focus
+
+					})) }}
+	{% else %}
+		{{ render (controller('SpsBundle:Map:show',{'id' : rejon.id })) }}
+	
+	{% endif %}
+	<div class=down></div>
+	<h3>Węzły :</h3>
+	<table class="greenTable">
+
+		<tr>
+		
+			<td>ID</td>
+			<td>Nazwa</td>
+			<td>OPIS</td>
+			<td>MAPA</td>
+		
+		</tr>
+		{% set i=0 %}
+		{% for wezel in wezly %}
+		
+		{% if i!=wezel.id %}
+			{% set i=wezel.id %}
+			
+			<tr>
+				
+				<td>{{ wezel.id }}<a href=""><font size=1>(edit)</font></a></td>
+				<td>{{ wezel.name }}</td>
+				<td>{{ wezel.opis }}</td> 
+					<td></td>
+				
+			</tr>
+		{% endif %}
+		<tr>
+			<td></td>
+			<td>{{ wezel.mid }}-{{ wezel.mkod }}<a href=""><font size=1>(edit)</font></a></td></td>
+		   <td>{{ wezel.mopis }}</td>
+		   <td><a href="
+				
+				{{ path('SpsBundle_base_rejon_focus',
+                        { 'id': rejon.id,
+                         'id_mufa_focus': wezel.mid}) }}
+			">POKAZ</a> 	</td>
+		
+		
+		{% else %} {% endfor %}
+		</tr>
+	</table>
+	
+	
+	<h3>Mufy :</h3>
+	<table class="greenTable">
+
+		<tr>
+		
+			<td>ID</td>
+			<td>KOD</td>
+			<td>OPIS</td>
+			<td>MAPA</td>
+		</tr>
+		{% for mufa in mufy %}
+		<tr>
+			
+			<td>{{ mufa.id }}<a href=""><font size=1>(edit)</font></a></td>
+			<td>{{ mufa.kod }}</td>
+			<td>{{ mufa.opis }}</td> 
+			<td><a href="
+				
+				{{ path('SpsBundle_base_rejon_focus',
+                        { 'id': rejon.id,
+                         'id_mufa_focus': mufa.id}) }}
+			">POKAZ</a> 	</td>
+		
+		
+		{% else %} {% endfor %}
+		</tr>
+	</table>
+
+
+	<div class=down></div>
+	<h3>Kable traktowe:</h3>
+	<table class="greenTable">
+
+		<tr>
+
+			<td>ID</td>
+			<td>OD MUFY</td>
+			<td>OPIS</td>
+			<td>DO MUFY</td>
+			<td>Dlugosc</td>
+
+
+		</tr>
+		{% for kabel in kable %}
+
+		<tr>
+			<td>{{ kabel.id }}<a href=""><font size=1>(edit)</font></a></td>
+			<td>
+				<a
+					href="{{ path('SpsBundle_base_rejon_kabelStart',
+                     { 'id': rejon.id,
+                       'id_kabel': kabel.id,
+							  'id_mufa':  kabel.id_start	})}}"
+				> 
+					{{ kabel.kod_start }}
+				</a>
+			</td>
+			<td>{{ kabel.producent }} {{ kabel.j }}j x{{ kabel.tubs }} ({{
+				kabel.standard }})</td>
+				
+			<td><a
+				href="{{ path('SpsBundle_base_rejon_kabelEnd',
+                { 'id': rejon.id,
+                    'id_kabel':  kabel.id,
+							'id_mufa':  kabel.id_end}
+                )}}"> {{ kabel.kod_end}}</a></td>
+                 
+                
+              <td>{{ kabel.lenght }} m </td>
+                {% endfor %}
+		</tr>
+	</table>
+
+	<div class=down></div>
+	<h3>Kable klienckie:</h3>
+	{%   if kableKlient is defined  %}
+	<table class="greenTable">
+
+		<tr>
+
+			<td>ID</td>
+			<td>OD MUFY</td>
+			<td>OPIS</td>
+			<td>DO MUFY</td>
+			<td>Dlugosc</td>
+		</tr>
+		
+		{% for kabelk in kableKlient %}
+
+		<tr>
+			<td>{{ kabelk.id }}<a href=""><font size=1>(edit)</font></a></td>
+			<td><a
+				href="{{ path('SpsBundle_base_rejon_kabelStart',
+                        { 'id': rejon.id,
+                         'id_kabel': kabelk.id,
+									'id_mufa':  kabelk.id_start	}
+                )}}"> {{ kabelk.id_start |get_mufa_name }}</a></td>
+			<td>{{ kabelk.producent }} {{ kabelk.j }}j x{{ kabelk.tubs }} ({{
+				kabelk.standard }})</td>
+			<td><a
+				href="{{ path('SpsBundle_base_rejon_kabelEnd',
+                { 'id': rejon.id,
+                    'id_kabel':  kabelk.id,
+							'id_mufa':  kabelk.id_end}
+                )}}"> {{ kabelk.id_end |get_mufa_name}}</a></td>
+                   <td> {{ kabelk.lenght }} m</td>
+                 {%endfor %}
+		</tr>
+	</table>
+	{% endif %}
+</article>
+
+{% endblock %}

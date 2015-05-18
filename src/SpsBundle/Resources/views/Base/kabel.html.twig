@@ -1,0 +1,127 @@
+{% extends 'SpsBundle::layout.html.twig' %} {% block title %} {%
+endblock %}
+
+
+{% block main_opis %}	<h2> {{ rejon.nazwa }} >> {{ wlokna.0.id.id_mufa }} </h2> {% endblock %}
+
+{% block body %}
+
+
+
+<article>
+<h3>Mapa :</h3>
+{{   render (controller('SpsBundle:Map:showKabel',{
+					'mufa' : wlokna.0.id.id_mufa,
+					'kabel': kabel.id
+		
+})) }}
+<h3>Włókna :</h3>
+	<table class="greenTable">
+		
+		<tr>
+			<td> Przebieg wlokna</td>
+			<td>KABEL</td>
+			<td> id </td>
+			<td>STAUS</td>
+			<td> id </td>
+			<td>KABEL</td>
+			<td> Przebieg wlokna</td>
+		</tr>
+			{% for wlokno in wlokna %}
+
+		
+	
+		<tr>
+		{% if wlokno.id.kod is defined %}
+			<td><a href=""><---</a></td>
+			<td>
+				<font size="2">
+					{{ wlokno.id.producent }} 
+					{{ wlokno.id.j }}x{{ wlokno.id.tubs }}
+					({{ wlokno.id.standard }})
+				 </font>
+				 {% if side =='end' %}
+					 <a href="{{ path('SpsBundle_base_rejon_kabelStart',
+	                        { 'id': rejon.id,
+	                         'id_kabel': kabel.id,
+										'id_mufa':   wlokno.id.mufa_end	}
+	                )}}">
+	           {% else %} 
+                 <a href="{{ path('SpsBundle_base_rejon_kabelEnd',
+	                        { 'id': rejon.id,
+	                         'id_kabel': kabel.id,
+										'id_mufa':   wlokno.id.mufa_end	}
+	                )}}">
+                
+              {% endif %}
+				 {{ wlokno.id.mufa_end | get_mufa_name}} </a> -->
+				 {{wlokno.id.id_mufa}}
+				-{{ wlokno.id.kod}} 
+			</td>
+			
+			<td> {{wlokno.id.id_w   }}</td>
+		   {%  else %}	
+				<td>  </td>
+				<td>  </td>
+				<td>  </td>
+				
+			
+			
+			{% endif %}
+		
+			<td>
+				{% if wlokno.id_spaw.kod is not defined %}
+					<font color=green>	WOLNE </font>
+				{% else %}
+					<font color=red>	SPAW </font>
+				{% endif %}
+			</td>
+			
+			
+			{% if wlokno.id_spaw.kod is defined %}
+			   <td> {{wlokno.id_spaw.id_w}} </td>
+				<td>		{{  wlokno.id_spaw.mufa_end | get_mufa_name}}
+				
+					{% if side =='end' %}
+						<---<a href="{{ path('SpsBundle_base_rejon_kabelStart',
+                        { 'id': rejon.id,
+                         'id_kabel': wlokno.id_spaw.id_k,
+									'id_mufa':   wlokno.id_spaw.mufa_end	}	
+                		)}}""> 
+                	{{ wlokno.id_spaw.id_mufa }} 
+                	{{ wlokno.id_spaw.kod}}
+               {% else %}
+               		<---<a href="{{ path('SpsBundle_base_rejon_kabelEnd',
+                        { 'id': rejon.id,
+                         'id_kabel': wlokno.id_spaw.id_k,
+								 'id_mufa':   wlokno.id_spaw.mufa_end	}	
+                		)}}""> 
+                	{{ wlokno.id_spaw.id_mufa }} 
+                	{{ wlokno.id_spaw.kod}}
+               	
+                
+               {%  endif %}
+                </a>
+            </td>
+					<td><a href="">--></a></td>
+			
+				
+		
+			{%  else %}	
+				<td>  </td>
+				<td>  </td>
+				<td>  </td>
+				
+			
+			
+			{% endif %}
+			
+			{% else %}
+				
+		  	{% endfor %}
+		</tr>
+	</table>
+
+</article>
+
+{% endblock %}

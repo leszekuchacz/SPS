@@ -1,0 +1,158 @@
+SpsBundle_index :
+    pattern:  /
+    defaults: { _controller: SpsBundle:Index:index }
+    requirements:
+      _method : GET
+
+      
+SpsBundle_base:
+    pattern: /base
+    defaults: { _controller: SpsBundle:Base:index }
+    requirements:
+      _method : GET
+SpsBundle_base_rejon:
+    pattern: /base/{id}
+    defaults: { _controller: SpsBundle:Base:rejon }
+    requirements:
+      _method : GET
+      id: \d+
+SpsBundle_base_rejon:
+    pattern: /base/{id}
+    defaults: { _controller: SpsBundle:Base:rejon }
+    requirements:
+      _method : GET
+      id: \d+
+      id_mufa_focus: \d+
+      
+SpsBundle_base_rejon_focus:
+    pattern: /base/{id}/focus/{id_mufa_focus}
+    defaults: { _controller: SpsBundle:Base:rejon }
+    requirements:
+      _method : GET
+      id: \d+
+      id_mufa_focus: \d+
+
+SpsBundle_base_rejon_kabelEnd:
+    pattern: /base/{id}/end/{id_mufa}/{id_kabel}
+    defaults: { _controller: SpsBundle:Base:kabelEnd }
+    requirements:
+      _method : GET
+      id: \d+
+      id_kabel: \d+
+      id_mufa: \d+
+
+SpsBundle_base_rejon_kabelStart:
+    pattern: /base/{id}/start/{id_mufa}/{id_kabel}
+    defaults: { _controller: SpsBundle:Base:kabelStart }
+    requirements:
+      _method : GET
+      id: \d+
+      id_kabel: \d+
+      id_mufa: \d+
+SpsBundle_add:
+    pattern: /add
+    defaults: { _controller: SpsBundle:Add:index }
+    requirements:
+      _method : GET
+
+SpsBundle_add_rejon:
+    pattern: /add/rejon
+    defaults: { _controller: SpsBundle:Add:rejon }
+    requirements:
+      _method : GET 
+      
+SpsBundle_add_rejon_post:
+    pattern: /add/rejon
+    defaults: { _controller: SpsBundle:Add:rejonReq }
+    requirements:
+      _method :  POST
+SpsBundle_add_mufa:
+    pattern: /add/mufa
+    defaults: { _controller: SpsBundle:Add:mufa }
+    requirements:
+      _method : GET 
+            
+SpsBundle_add_mufa_post:
+    pattern: /add/mufa
+    defaults: { _controller: SpsBundle:Add:mufaReq }
+    requirements:
+      _method : POST
+      
+
+      
+SpsBundle_add_kabel:
+    pattern: /add/kabel
+    defaults: { _controller: SpsBundle:Add:kabel }
+    requirements:
+      _method : GET
+      
+SpsBundle_add_kabel_post:
+    pattern: /add/kabel
+    defaults: { _controller: SpsBundle:Add:kabelReq }
+    requirements:
+      _method : POST     
+ 
+
+SpsBundle_add_standard:
+    pattern: /add/standard
+    defaults: { _controller: SpsBundle:Add:standard }
+    requirements:
+      _method : GET
+      
+SpsBundle_add_standard_post:
+    pattern: /add/standard
+    defaults: { _controller: SpsBundle:Add:standardReq }
+    requirements:
+      _method : POST
+
+SpsBundle_add_typ:
+    pattern: /add/type
+    defaults: { _controller: SpsBundle:Add:type }
+    requirements:
+      _method : GET
+      
+SpsBundle_add_typ_post:
+    pattern: /add/type
+    defaults: { _controller: SpsBundle:Add:typeReq }
+    requirements:
+      _method : POST
+
+
+
+SpsBundle_map:
+    pattern: /map
+    defaults: { _controller: SpsBundle:Map:index }
+    requirements:
+      _method : GET 
+
+SpsBundle_set:
+    pattern: /set
+    defaults: { _controller: SpsBundle:Set:index }
+    requirements:
+      _method : GET 
+      
+SpsBundle_set_add:
+    pattern: /set/add/
+    defaults: { _controller: SpsBundle:Set:add }
+    requirements:
+      _method : POST
+      
+SpsBundle_set_edit:
+    pattern: /set/edit/{id}
+    defaults: { _controller: SpsBundle:Set:edit }
+    requirements:
+      _method : POST
+      id : \d+
+
+   
+#SpsBundle_add:
+#     pattern: /add
+#    defaults: { _controller: SpsBundle:Add:index }
+#
+#SpsBundle_map:
+#     pattern: /map
+#   defaults: { _controller: SpsBundle:Map:index }
+#
+#SpsBundle_set:
+#     pattern: /set
+#    defaults: { _controller: SpsBundle:Set:index }*/

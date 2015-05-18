@@ -1,0 +1,111 @@
+{%  extends 'SpsBundle::Add/index.html.twig' %}
+{% block body %}
+
+
+<h2> Dodaj Rejon </h2>
+
+
+
+
+<table class=greenTable>
+  <tr>
+		<td>Zmienna</td>
+		<td>Wartosc</td>
+	</tr>
+		
+<form action="{{ path('SpsBundle_add_mufa_post') }}" method="post"
+	<tr>
+    	<td>{{ form_label(form.kod) }}</td>
+    	<td> 
+    	<font color=red>	{{ form_errors(form.kod) }} </font>
+    		{{ form_widget(form.kod) }}
+    	</td>
+	</tr>
+	<tr>
+		<td>
+    		{{ form_label(form.opis) }}
+   	<td>
+   		 <font color=red>{{ form_errors(form.opis) }} </font>
+    		{{ form_widget(form.opis) }}
+		</td>
+    </tr>
+	<tr>
+		<td>
+    		{{ form_label(form.gps_n) }} 
+    	</td>
+    	<td>
+    	<font color=red>	{{ form_errors(form.gps_n) }} </font>
+    		<a href="http://www.latlong.net/">mapa 1 wartosc</a>{{ form_widget(form.gps_n) }}
+		</td>
+	</tr>
+	<tr>
+		<td>
+    		{{ form_label(form.gps_e) }}
+    	</td>
+    	<td>
+    		<font color=red>{{ form_errors(form.gps_e) }} </font>
+    	<a href="http://www.latlong.net/">mapa 2 wartosc</a>	{{ form_widget(form.gps_e) }}
+		</td>
+	</tr>
+	<tr>
+		<td>
+    		{{ form_label(form.id_rejon) }}
+    	</td>	
+    	<td>
+    		<font color=red>{{ form_errors(form.id_rejon) }} </font>
+    		{{ form_widget(form.id_rejon) }}
+		</td>
+	</tr>
+	<tr>
+		<td>
+    		{{ form_label(form.id_mufa_type) }}
+    	</td>
+    	<td>
+    		<font color=red>{{ form_errors(form.id_mufa_type) }} </font>
+    		{{ form_widget(form.id_mufa_type) }}
+		</td>
+	</tr>
+	<tr>
+		<td>
+    		{{ form_label(form.id_object_type) }}
+		</td>
+		<td>
+    		<font color=red>{{ form_errors(form.id_object_type) }} </font>
+   		{{ form_widget(form.id_object_type) }}
+		</td>
+	</tr>	
+	<tr>
+		<td></td>
+		<td>
+     		<input type="submit"/>
+		</td>
+	</tr>
+{{ form_row(form._token) }}
+
+</table>
+
+<div class=down></div>
+<h3> Edytuj / Usun Mufe</h3>
+<table class=greenTable>
+  <tr>
+  		<td>Id</td>
+  		<td>Kod</td>
+  		<td>Nazwa</td>
+  		<td>Akcja</td>
+  	
+  </tr>
+  {% for mufa in mufy %}
+    <tr>
+  		<td>{{ mufa.id }}</td>
+  		<td>{{ mufa.kod }}</td>
+  		<td>{{ mufa.opis }}</td>
+  		<td><a href="" ><div class=blueBtn>Edytuj</div></a>
+  			<a href=""><div class="redBtn">Usun</div></a></td>
+  		
+  </tr>
+  {% endfor %}
+ </table>
+
+
+
+{% endblock %}

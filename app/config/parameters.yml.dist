@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: sql.s25.vdl.pl
+    database_port: '3306'
+    database_name: obslugap_sps
+    database_user: obslugap_sps
+    database_password: obslugap__sps
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: 32f51ba6429263e04471e6857309d6c32274af6f

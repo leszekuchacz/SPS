@@ -1,0 +1,57 @@
+<?php
+namespace SpsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+ /**
+ * @ORM\Entity(repositoryClass="SpsBundle\Entity\Repository\MufaTypeRepository")
+ * @ORM\Table(name="mufa_type")
+ * @ORM\HasLifecycleCallbacks()
+ */
+
+class MufaType
+{
+	
+	public function __construct()
+	{
+		$this->inverseMufa = new ArrayCollection();
+		$this->inverseKabel = new ArrayCollection();
+	}
+	
+	/**
+	 * @ORM\Id
+	 * @ORM\Column(type="integer")
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	protected $id;
+	
+	/**
+	 * @ORM\Column(type="string", length=100,nullable=true)
+	 * 
+	 */
+	protected $name=null;
+	/**
+	 * @ORM\Column(type="integer",nullable=true)
+	 *
+	 */
+	protected $value=null;
+	
+	/**
+	 * @ORM\Column(type="string", length=100,nullable=true)
+	 *
+	 */
+	protected $tag=null;
+	/**
+	 * @ORM\Column(type="string", length=100,nullable=true)
+	 *
+	 */
+	protected $type=null;
+	
+	/**
+	 * @ORM\OneToMany(targetEntity="Mufa", mappedBy="id_mufa_type")
+	 */
+	private $inverseMufa;
+	
+   
+}

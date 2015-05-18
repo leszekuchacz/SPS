@@ -1,0 +1,17 @@
+{%  extends 'SpsBundle::layout.html.twig' %}
+{% block navigation2 %}
+
+	<header id="header">
+		<ul class=navigation>
+			<li><a href="{{ path('SpsBundle_add_rejon') }}">Rejon</a></li>
+			<li><a href="{{ path('SpsBundle_add_mufa') }}">Mufe</a></li>
+			<li><a href="{{ path('SpsBundle_add_kabel') }}">Kabel</a></li>
+			<li><a href="{{ path('SpsBundle_add_standard') }}">Standard</a></li>
+			<li><a href="{{ path('SpsBundle_add_typ') }}">Typ elementu</a></li>
+		</ul>
+		
+</header>
+{% if result is defined  %}
+<h2> {{ result }} </h2>
+{% endif %}
+{% endblock %}

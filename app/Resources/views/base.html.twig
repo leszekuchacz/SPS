@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" ; charset=utf-8 " />
+<title>{% block title %}Paszportyzacja sieci{% endblock %}</title>
+<!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+{% block stylesheets %}
+<link href='http://fonts.googleapis.com/css?family=Irish+Grover'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore'
+	rel='stylesheet' type='text/css'>
+
+{% endblock %}
+<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+	<section id="wrapper">
+		<header id="header">
+
+			{% block navigation %}
+			<nav>
+				<ul class=navigation>
+
+					<li><a href="{{ path('SpsBundle_index') }}">Home</a></li>
+					<li><a href="{{ path('SpsBundle_base') }}">Baza</a></li>
+					<li><a href="{{ path('SpsBundle_add') }}">Zarządzaj Obiektami </a></li>
+					<li><a href="{{ path('SpsBundle_map') }}">Mapa</a></li>
+					<li><a href="{{ path('SpsBundle_set') }}">Ustawienia</a></li>
+				</ul>
+			</nav>
+			{% endblock %}
+
+
+		</header>
+		{% block navigation2 %}
+	{% endblock %}
+		{% block main_opis %}{% endblock %}
+		<section class="main">{% block body %}{% endblock %}</section>
+
+		<div id="footer">{% block footer %}<a href="https://github.com/leszekuchacz/SPS">changelog</a>  {% endblock %}</div>
+	</section>
+
+
+
+	{% block javascripts %}{% endblock %}
+
+</body>
+</html>

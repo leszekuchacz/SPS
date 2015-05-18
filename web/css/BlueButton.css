@@ -1,0 +1,29 @@
+.blueBtn {
+  background: #91defa;
+  background-image: -webkit-linear-gradient(top, #91defa, #0072eb);
+  background-image: -moz-linear-gradient(top, #91defa, #0072eb);
+  background-image: -ms-linear-gradient(top, #91defa, #0072eb);
+  background-image: -o-linear-gradient(top, #91defa, #0072eb);
+  background-image: linear-gradient(to bottom, #91defa, #0072eb);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: white;
+  font-size: 18px;
+  padding: 10px 10px 10px 10px;
+  text-decoration: none;
+
+  display: block;
+  margin : 1px;
+}
+
+.blueBtn:hover {
+  background: #00ff1e;
+  background-image: -webkit-linear-gradient(top, #00ff1e, #10ad54);
+  background-image: -moz-linear-gradient(top, #00ff1e, #10ad54);
+  background-image: -ms-linear-gradient(top, #00ff1e, #10ad54);
+  background-image: -o-linear-gradient(top, #00ff1e, #10ad54);
+  background-image: linear-gradient(to bottom, #00ff1e, #10ad54);
+  text-decoration: none;
+}

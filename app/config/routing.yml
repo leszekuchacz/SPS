@@ -1,0 +1,7 @@
+SpsBundle:
+    resource: "@SpsBundle/Resources/config/routing.yml"
+    prefix:   /sps
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
