@@ -1,0 +1,12 @@
+services:
+#    sps.example:
+#        class: SpsBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+services:
+    Sps.twig.extension:
+        class: SpsBundle\Twig\Extensions\SpsBundleExtension
+        public: true
+        arguments:
+              doctrine: "@doctrine"
+        tags:
+            - { name: twig.extension }

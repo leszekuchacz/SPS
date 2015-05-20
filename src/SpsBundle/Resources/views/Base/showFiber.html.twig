@@ -1,0 +1,48 @@
+{% extends 'SpsBundle::layout.html.twig' %} {% block title %} {%
+endblock %} {% block main_opis %}
+<h2>{{ rejon.nazwa }}</h2>
+{% endblock %} {% block body %}
+
+
+
+<article>
+
+	
+	<div class=down></div>
+	<h3>Przebieg włókna  :</h3>
+	<table class="greenTable">
+
+		<tr>
+		
+			<td>ID Wlokno</td>
+			<td>OD</td>
+			<td>Dlugosc odcinka</td>
+			<td>DO</td>
+			<td>RAZEM</td>
+			
+		
+		
+		
+		</tr>
+		{% for wlokno in wlokna %}
+		<tr>
+			<td>
+				 {{ wlokno.w_pos }}-
+				 <font color= {{  wlokno.s_color }}>{{ wlokno.s_nazwa }}</font>
+				 <font size=1>({{ wlokno.od_id_w }})</font>
+			
+			
+			</td>
+			<td>{{ wlokno.od_id }}-{{ wlokno.od_kod }}</td>
+			<td> <====={{ wlokno.producent }} {{ wlokno.j }}J x {{wlokno.tubs}} ({{ wlokno.standard }}) {{ wlokno.od_lenght}} m =====></td>
+			<td>{{ wlokno.do_id }}- {{ wlokno.do_kod }}</td>
+			<td>{{ wlokno.razem/1000 }} km</td>
+		
+		</tr>
+		{% endfor %}
+	</table>
+	
+
+</article>
+
+{% endblock %}

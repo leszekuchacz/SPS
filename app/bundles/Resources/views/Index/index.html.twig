@@ -1,0 +1,43 @@
+{%  extends 'SpsBundle::layout.html.twig' %}
+
+{% block main_opis %} <h2>Informacje o aplikacji</h2> {% endblock %}
+
+{% block body %} 
+	
+<article>
+        <h3>Zaplanowane prace :</h3>
+            <p>Przespwanie mufy na paprotek...</p>
+            <p>..</p>
+
+		<h3>Wazne info</h3>
+		<p> Ostatni Backup: 2015-5-5 18:33</p>
+
+		<h3>Cyfra jest najwazniejsza : </h3>
+			<p>Ilosc wszystkich kabli: 0 <p>
+			<p>Dlugosc wszystkich kablis: 0 <p>
+			<p>Ilosc wszystkichelementow: 0 <p>
+			<p>Ilosc koncowek klienckich: 0 <p>
+	
+		<h3>Ostanio sie działo:</h3>
+			{% for histori in histores %}
+
+
+		
+			
+				 
+			<p>Log {{ histori.id }}
+			 z {{ histori.data |date("F jS \\a\\t g:ia") }}
+			została wykonana operacja 
+				<font color="green">{{ histori.operacja }}</font> 
+				przez użytkownika <font color="red">Admin</font>
+				</p>
+			{% else %}
+
+			<p>NO HISTORI!</P>
+			{% endfor %}
+		</table>
+	
+</article>
+	
+
+{% endblock %}

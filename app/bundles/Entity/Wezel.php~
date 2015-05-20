@@ -1,0 +1,59 @@
+<?php
+namespace SpsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints as Assert;
+
+ /**
+ * @ORM\Entity(repositoryClass="SpsBundle\Entity\Repository\WezelRepository")
+ * @ORM\Table(name="wezel")
+ * @ORM\HasLifecycleCallbacks()
+ */
+
+class Wezel
+{
+	
+	public function __construct()
+	{
+		$this -> id_mufa = new ArrayCollection();
+		$this -> id_kabel = new ArrayCollection();
+	}
+	public function __toString()
+	{
+		return $this->name;
+	}
+	
+	/**
+	 * @ORM\Id
+	 * @ORM\Column(type="integer")
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	protected $id;
+	/**
+	 * @ORM\ManyToOne(targetEntity="Rejon", inversedBy="id_wezel")
+	 * @ORM\JoinColumn(name="id_rejon", referencedColumnName="id")
+	 */
+	protected $id_rejon;
+	
+	/**
+	 * @ORM\OneToMany(targetEntity="Mufa", mappedBy="id_wezel")
+	 */
+	protected $id_mufa;
+	/**
+	 * @ORM\OneToMany(targetEntity="Kabel", mappedBy="id_wezel")
+	 */
+	protected $id_kabel;
+	/**
+	 * @ORM\Column(type="string", length=100)
+	 */
+	protected $name;
+	/**
+	 * @ORM\Column(type="string", length=100)
+	 */
+	protected $opis;
+	
+	
+}

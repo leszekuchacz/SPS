@@ -1,0 +1,134 @@
+{%  extends 'SpsBundle::Add/index.html.twig' %}
+{% block body %}
+
+
+<h2> Dodaj Rejon </h2>
+
+
+
+
+<table class=greenTable>
+  <tr>
+		<td>Zmienna</td>
+		<td>Wartosc</td>
+	</tr>
+        
+ 
+<form action="{{ path('SpsBundle_add_kabel_post') }}" method="post"
+
+	<tr>
+    	<td>{{ form_label(form.id_mufa_start) }}</td>
+    	<td> 
+    	<font color=red>	{{ form_errors(form.id_mufa_start) }} </font>
+    		{{ form_widget(form.id_mufa_start) }}
+    	</td>
+	</tr>
+	<tr>
+	<tr>
+    	<td>{{ form_label(form.id_mufa_end) }}</td>
+    	<td> 
+    	<font color=red>	{{ form_errors(form.id_mufa_end) }} </font>
+    		{{ form_widget(form.id_mufa_end) }}
+    	</td>
+	</tr>
+	<tr>
+
+	<tr>
+    	<td>{{ form_label(form.producent) }}</td>
+    	<td> 
+    	<font color=red>	{{ form_errors(form.producent) }} </font>
+    		{{ form_widget(form.producent) }}
+    	</td>
+	</tr>
+	<tr>
+		<td>
+    		{{ form_label(form.j) }}
+   	<td>
+   		 <font color=red>{{ form_errors(form.j) }} </font>
+    		{{ form_widget(form.j) }}
+		</td>
+    </tr>
+	<tr>
+		<td>
+    		{{ form_label(form.tubs) }}
+    	</td>
+    	<td>
+    	<font color=red>	{{ form_errors(form.tubs) }} </font>
+    		{{ form_widget(form.tubs) }}
+		</td>
+	</tr>
+	<tr>
+		<td>
+    		{{ form_label(form.lenght) }}
+    	</td>
+    	<td>
+    		<font color=red>{{ form_errors(form.lenght) }} </font>
+    		{{ form_widget(form.lenght) }}
+		</td>
+	</tr>
+	<tr>
+		<td>
+    		{{ form_label(form.id_standard) }}
+    	</td>	
+    	<td>
+    		<font color=red>{{ form_errors(form.id_standard) }} </font>
+    		{{ form_widget(form.id_standard) }}
+		</td>
+	</tr>
+	<tr>
+		<td>
+    		{{ form_label(form.id_kabel_type) }}
+    	</td>
+    	<td>
+    		<font color=red>{{ form_errors(form.id_kabel_type) }} </font>
+    		{{ form_widget(form.id_kabel_type) }}
+		</td>
+	</tr>
+	<tr>
+		<td>
+    		{{ form_label(form.id_object_type) }}
+		</td>
+		<td>
+    		<font color=red>{{ form_errors(form.id_object_type) }} </font>
+   		{{ form_widget(form.id_object_type) }}
+		</td>
+	</tr>	
+	<tr>
+		<td></td>
+		<td>
+     		<input type="submit"/>
+		</td>
+	</tr>
+{{ form_row(form._token) }}
+</form>
+</table>    
+
+
+<div class=down></div>
+<h3> Edytuj / Usun Kabel</h3>
+<table class=greenTable>
+  <tr>
+  		<td>Id</td>
+  		<td>od</td>
+  		<td>do</td>
+  		<td>Dlugosc</td>
+  		<td>Akcja</td>
+  	
+  </tr>
+  {% for kabel in kable %}
+    <tr>
+  		<td>{{ kabel.id }}</td>
+  		<td>{{ kabel.kod_start }}</td>
+  		<td>{{ kabel.kod_end }}</td>
+  		<td>{{ kabel.lenght }}</td>
+  	
+  		<td><a href="" ><div class=blueBtn>Edytuj</div></a>
+  			<a href=""><div class="redBtn">Usun</div></a></td>
+  		
+  </tr>
+  {% endfor %}
+ </table>
+
+
+
+{% endblock %}

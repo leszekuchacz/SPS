@@ -1,0 +1,145 @@
+<?php
+namespace SpsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+use SpsBundle\Entity\Histori;
+
+/**
+ * @ORM\Entity(repositoryClass="SpsBundle\Entity\Repository\RejonRepository")
+ * @ORM\Table(name="rejon")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class Rejon {
+	
+	
+	
+	private static $historiInstance = false;
+	
+	public static function getInstance()
+	{
+		if( self::$historiInstance == false )
+		{
+			self::$historiInstance = new Histori();
+		
+		}
+		return self::$historiInstance;
+	}
+	
+	
+	public function __construct()
+	{
+		//self::$historiInstance = new Histori($user,'tsdasd');
+		$this->inverseRejon = new ArrayCollection();
+		$this->inverseIdRejon = new ArrayCollection();
+	}
+	
+	/**
+	 * @@ORM\OneToMany(targetEntity="Mufa", mappedBy="id_rejon")
+	 */
+	
+	private $inverseIdRejon;
+	
+	/**
+	* @@ORM\OneToMany(targetEntity="Histori", mappedBy="id_rejon")
+	*/
+	private $inverseRejon;
+	
+	/**
+	 * @ORM\Id
+	 * @ORM\Column(type="integer")
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	protected $id;
+	
+	/**
+	 * @ORM\Column(type="string", length=100)
+	 */
+	protected $nazwa;
+	/**
+	 * @ORM\Column(type="string", length=100)
+	 */
+	protected $kod;
+	
+	
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nazwa
+     *
+     * @param string $nazwa
+     * @return Rejon
+     */
+    public function setNazwa($nazwa)
+    {
+        $this->nazwa = $nazwa;
+
+        return $this;
+    }
+
+    /**
+     * Get nazwa
+     *
+     * @return string 
+     */
+    public function getNazwa()
+    {
+        return $this->nazwa;
+    }
+
+    /**
+     * Set kod
+     *
+     * @param string $kod
+     * @return Rejon
+     */
+    public function setKod($kod)
+    {
+        $this->kod = $kod;
+
+        return $this;
+    }
+
+    /**
+     * Get kod
+     *
+     * @return string 
+     */
+    public function getKod()
+    {
+        return $this->kod;
+    }
+
+    /**
+     * Set id_histori
+     *
+     * @param \SpsBundle\Entity\Histori $idHistori
+     * @return Rejon
+     */
+    public function setIdHistori(\SpsBundle\Entity\Histori $idHistori = null)
+    {
+        $this->id_histori = $idHistori;
+
+        return $this;
+    }
+
+    /**
+     * Get id_histori
+     *
+     * @return \SpsBundle\Entity\Histori 
+     */
+    public function getIdHistori()
+    {
+        return $this->id_histori;
+    }
+}

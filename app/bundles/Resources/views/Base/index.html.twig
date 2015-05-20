@@ -1,0 +1,51 @@
+{% extends 'SpsBundle::layout.html.twig' %} 
+
+
+{% block main_opis %}
+<h2>Dostepne trakty:</h2>
+{% endblock %} {% block body %}
+
+
+
+
+
+<article>
+
+
+
+
+	<table class="greenTable">
+		<tr>
+			<td>*</td>
+			<td>ID</td>
+			<td>KOD TRAKTU</td>
+			<td>OPIS TRAKTU</td>
+			<td>ILOSC ELEMENTOW</td>
+			<td>ZAPLANOWANYCH SPAWOW</td>
+			<td>DLUGOSC TRAKTU</td>
+		</tr>
+		{% for rejon in rejons %}
+
+
+		<tr>
+			<td><a href="{{ path('SpsBundle_base_rejon', { 'id': rejon.id}) }}">
+					POKAZ </a></td>
+
+			<td>{{ rejon.id }}</td>
+			<td>{{ rejon.kod }}</td>
+			<td>{{ rejon.nazwa }}</td>
+			<td>{{ rejon.c }}</td>
+			<td>0</td>
+			<td>{{ rejon.l/1000 }} km</td>
+
+		</tr>
+
+		{% else %}
+
+		<p>NO REJON ADD ONE!</P>
+		{% endfor %}
+	</table>
+
+</article>
+
+{% endblock %}

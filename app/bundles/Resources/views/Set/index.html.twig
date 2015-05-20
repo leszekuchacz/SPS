@@ -1,0 +1,31 @@
+{%  extends 'SpsBundle::layout.html.twig' %}
+{% block body %} 
+
+
+<article>
+
+<h3>Ustawienia :</h3>
+	<table class="greenTable">
+		
+		<tr>
+			<td> klucz </td>
+			<td>Wartosc</td>
+			<td>Edit</td>
+			
+		</tr>
+		{% for dana in data %}
+		<tr>
+			<td>{{ dana.name }}</td>
+			<td>{{ dana.value }}</td>
+			<td><a href= {{  path('SpsBundle_set_edit', {id :dana.id} )}}>edit</a> </td>
+		</tr>	
+		{% endfor %}
+	</table>
+
+<div class=down>
+<h3>Dodaj nowy klucz :</h3>
+		{% include 'SpsBundle:Set:formAdd.html.twig' with {'form' : form} %}
+</div>
+
+</article>
+{% endblock %}

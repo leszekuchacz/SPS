@@ -1,0 +1,56 @@
+{%  extends 'SpsBundle::Add/index.html.twig' %}
+
+{% block body %}
+
+
+<table class=greenTable>
+  <tr>
+		<td>Dodaj nowy Rejon</td>
+	</tr>
+		
+<form action="{{ path('SpsBundle_add_rejon_post') }}" method="post"
+	<tr><td>
+    {{ form_label(form.nazwa) }}
+    {{ form_errors(form.nazwa) }}
+    {{ form_widget(form.nazwa) }}
+	</td></tr>
+	<tr><td>
+    {{ form_label(form.kod) }}
+    {{ form_errors(form.kod) }}
+    {{ form_widget(form.kod) }}
+	</tr></td>
+
+
+	<tr><td>
+     <input type="submit" />
+	</tr></td>
+{{ form_row(form._token) }}
+</form>
+</table>
+<div class=down></div>
+
+
+<table class=greenTable>
+  <tr>
+  		<td>Id</td>
+  		<td>Kod</td>
+  		<td>Nazwa</td>
+  		<td>Akcja</td>
+  	
+  </tr>
+  {% for rejon in rejony %}
+    <tr>
+  		<td>{{ rejon.id }}</td>
+  		<td>{{ rejon.kod }}</td>
+  		<td>{{ rejon.nazwa }}</td>
+  		<td><a href="" ><div class=blueBtn>Edytuj</div></a>
+  			<a href=""><div class="redBtn">Usun</div></a></td>
+  		
+  </tr>
+  {% endfor %}
+ </table>
+
+
+
+
+{% endblock %}
