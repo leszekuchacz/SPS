@@ -11,6 +11,7 @@ use SpsBundle\Entity\Tag;
 use SpsBundle\Form\WloknoType;
 use SpsBundle\Form\DeleteSpawType;
 use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceList;
+use SpsBundle\Form\SpsBundle\Form;
 
 
 class BaseController extends Controller {
@@ -201,18 +202,23 @@ class BaseController extends Controller {
 				
 					// print_r($id_spaw);
 				$x [$i] ['id_spaw'] = $id_spaw [0];
+				$x[$i]['dform'] = $this -> createForm(new DeleteSpawType())->createView();
+					
+					
 			} else {
 				$x [$i] ['id_spaw'] = array ();
+
+				$x[$i]['form'] = $this -> createForm(new WloknoType(),$z)->createView();
+					
+			
 			}
 			
-			
-			$x[$i]['form'] = $this -> createForm(new WloknoType(),$z)->createView();
 			$i ++;
 		}
 		$side = "end";
 		
-
-		$form = $this->createForm(new DeleteSpawType());
+		
+		
 		
 
 		$em->clear ();
@@ -221,8 +227,7 @@ class BaseController extends Controller {
 				'kabel' => $kabel,
 				'wlokna' => $x,
 				'side' => $side,
-				'print' => $print,
-				'dform' => $form->createView()
+				'print' => $print
 		) );
 	}
 	public function kabelStartAction($id, $id_kabel, $id_mufa,$print=false) {
@@ -271,14 +276,15 @@ class BaseController extends Controller {
 			if ($wlokno ['id_spaw'] != null) {
 				$id_spaw = $em->getRepository ( 'SpsBundle:Wlokno' )->getSpawStartFromId ( $wlokno ['id_spaw'] );
 				
+				$x[$i]['dform'] = $this -> createForm(new DeleteSpawType())->createView();
 				
 				$x [$i] ['id_spaw'] = $id_spaw [0];
 			} else {
 				$x [$i] ['id_spaw'] = array ();
-			
+				$x[$i]['form'] = $this -> createForm(new WloknoType(),$z)->createView();
+				
 			}
-			$x[$i]['form'] = $this -> createForm(new WloknoType(),$z)->createView();
-		
+			
 			$i ++;
 		}
 		$side = "start";
@@ -286,15 +292,13 @@ class BaseController extends Controller {
 		$em->flush ();
 		$em->clear ();
 		
-		$form = $this->createForm(new DeleteSpawType());
-		
+	
 		return $this->render ( 'SpsBundle:Base:kabel.html.twig', array (
 				'rejon' => $rejon,
 				'kabel' => $kabel,
 				'wlokna' => $x,
 				'side' => $side,
-				'print' => $print,
-				'dform' => $form->createView() 
+				'print' => $print
 		) );
 	}
 	public function addSpawAction($id,$id_kabel,$id_mufa,Request $request){

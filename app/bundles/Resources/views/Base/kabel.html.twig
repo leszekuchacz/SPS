@@ -122,19 +122,22 @@
 						
 						
 				{% else %}
+				
 					<form action="{{ path('SpsBundle_base_rejon_spaw_delete',
 							  	{'id': rejon.id,
                          'id_kabel': wlokno.id.id_k,
 								 'id_mufa':   wlokno.id.id_mufa})}}"
-							 		method="post"> 
- 								 {{ form_widget(dform.id_lewa,{value : wlokno.id.id_w}) }}	
-								 {{ form_widget(dform.id_prawa,{value : wlokno.id_spaw.id_w}) }}	
-  								 {{ form_widget(dform.side,{value : side}) }}
-							 	 {{ form_enctype(dform) }}
+							 		method="post"  {{ form_enctype(wlokno.dform) }}> 
+ 								 {{ form_widget(wlokno.dform.id_lewa,{value : wlokno.id.id_w}) }}	
+								 {{ form_widget(wlokno.dform.id_prawa,{value : wlokno.id_spaw.id_w}) }}	
+  								 {{ form_widget(wlokno.dform.side,{value : side}) }}
+							 
 						<td>
 							<font color=red>	SPAW </font>
 								<input type="submit" value="Usun" />
+								
 						</td>
+						{{ form_row(wlokno.dform._token) }}
 					</form>
 							  	
 				{% endif %}
