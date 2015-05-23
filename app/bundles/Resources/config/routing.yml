@@ -31,16 +31,7 @@ SpsBundle_base_rejon_focus:
       _method : GET
       id: \d+
       id_mufa_focus: \d+
-
-SpsBundle_base_rejon_kabelEnd:
-    pattern: /base/{id}/end/{id_mufa}/{id_kabel}
-    defaults: { _controller: SpsBundle:Base:kabelEnd }
-    requirements:
-      _method : GET
-      id: \d+
-      id_kabel: \d+
-      id_mufa: \d+
-
+      
 SpsBundle_base_rejon_kabelStart:
     pattern: /base/{id}/start/{id_mufa}/{id_kabel}
     defaults: { _controller: SpsBundle:Base:kabelStart }
@@ -49,6 +40,49 @@ SpsBundle_base_rejon_kabelStart:
       id: \d+
       id_kabel: \d+
       id_mufa: \d+
+      print: true|false|null
+SpsBundle_base_rejon_kabelEnd:
+    pattern: /base/{id}/end/{id_mufa}/{id_kabel}
+    defaults: { _controller: SpsBundle:Base:kabelEnd }
+    requirements:
+      _method : GET
+      id: \d+
+      id_kabel: \d+
+      id_mufa: \d+
+      print: true|false|null
+ 
+SpsBundle_base_rejon_kabelStart_print:
+    pattern: /base/{id}/start/{id_mufa}/{id_kabel}/print/{print}
+    defaults: { _controller: SpsBundle:Base:kabelStart }
+    requirements:
+      _method : GET
+      id: \d+
+      id_kabel: \d+
+      id_mufa: \d+
+      print: true|false|null
+      
+SpsBundle_base_rejon_kabelEnd_print:
+    pattern: /base/{id}/end/{id_mufa}/{id_kabel}/print/{print}
+    defaults: { _controller: SpsBundle:Base:kabelEnd }
+    requirements:
+      _method : GET
+      id: \d+
+      id_kabel: \d+
+      id_mufa: \d+
+      print: true|false|null
+       
+SpsBundle_base_rejon_kabel_add_spaw:
+    pattern: /base/{id}/add/{id_mufa}/{id_kabel}
+    defaults: { _controller: SpsBundle:Base:addSpaw }
+    requirements:
+      _method : POST
+      id: \d+
+      id_kabel: \d+
+      id_mufa: \d+
+      
+
+      
+
 
 SpsBundle_base_rejon_fiber:
     pattern: /base/{id}/fiber/{id_mufa}/{id_w}
@@ -58,6 +92,18 @@ SpsBundle_base_rejon_fiber:
       id: \d+
       id_w: \d+
       id_mufa: \d+
+      
+      
+SpsBundle_base_rejon_spaw_delete:
+    pattern: /base/{id}/delete/{id_mufa}/{id_kabel}
+    defaults: { _controller: SpsBundle:Base:deleteSpaw }
+    requirements:
+      _method : POST
+      id: \d+
+      id_w: \d+
+      id_mufa: \d+
+  
+  
   
 SpsBundle_add:
     pattern: /add
@@ -87,6 +133,7 @@ SpsBundle_add_mufa_post:
     defaults: { _controller: SpsBundle:Add:mufaReq }
     requirements:
       _method : POST
+  
       
 
       

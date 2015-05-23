@@ -181,6 +181,12 @@ class MapController extends Controller
 	}
 	public function showKabelAction($mufa,$kabel){
 		
+		$em = $this-> getDoctrine()->getManager();
+		$main = $em->getRepository ( 'SpsBundle:Mufa' )->find ( $mufa );
+		
+		
+		
+		
 		$map = new Map();
 		$map->setPrefixJavascriptVariable('map_');
 		$map->setHtmlContainerId('map_canvas');
@@ -188,7 +194,7 @@ class MapController extends Controller
 		$map->setAsync(false);
 		$map->setAutoZoom(true);
 		
-		$map->setCenter(0, 0, true);
+		$map->setCenter(50, 18, true);
 		$map->setMapOption('zoom', 2);
 		
 		$map->setBound(-2.1, -3.9, 2.6, 1.4, true, true);

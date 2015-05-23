@@ -133,3 +133,80 @@ body {
 	padding: 10px;
 	color: #aaa;
 }
+
+
+.print *{	
+	margin :0px;
+	padding: 0px;
+	clear : both;
+	font-weight:normal;
+	text-decoration: none;
+	line-height: 1.3;
+  	font:solid;
+	background: white;
+	
+	font: 8pt Georgia, "Times New Roman", Times, serif;
+}
+.print .greenTable {
+	font: 8pt Georgia, "Times New Roman", Times, serif;
+	text-align: center;
+	margin :0px;
+	padding: 0px;
+	font-size:8px;
+	box-shadow: 0px 0px 0px #888888;
+	-moz-border-radius-topleft: 0px;
+	-webkit-border-top-left-radius: 0px;
+	-webkit-gradient:0px;
+	border-top-left-radius: 0px;
+}
+
+.print .greenTable * {
+	font: 8pt Georgia, "Times New Roman", Times, serif;
+	text-align: center;
+	margin :0px;
+	padding: 0px;
+	font-size:8px;
+	box-shadow: 0px 0px 0px #888888;
+	-moz-border-radius-topleft: 0px;
+	-webkit-border-top-left-radius: 0px;
+	-webkit-gradient:0px;
+	border-top-left-radius: 0px;
+}
+
+.print .greenTable tr:first-child td{
+		font: 8pt Georgia, "Times New Roman", Times, serif;
+	text-align: center;
+	margin :0px;
+	padding: 0px;
+	box-shadow: 0px 0px 0px #000000;
+	-moz-border-radius-topleft: 0px;
+	-webkit-border-top-left-radius: 0px;
+	border-top-left-radius: 0px;
+
+	background: white;
+	color: black;
+}
+.print #wrapper a{
+	color :black;
+}
+.print h3,.print input,.print select{
+	margin: 0px ;
+	display: none;
+	
+}
+
+.print .printblock, .print .down{
+	margin: 0px ;
+	padding:0px;
+	display: none;
+}
+.print #map_canvas,.print #header,.print #footer{
+	
+	margin: 0px ;
+	display: none;
+	border: 0px;
+
+}
+
+
+

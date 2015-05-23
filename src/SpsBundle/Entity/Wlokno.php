@@ -11,12 +11,24 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Wlokno{
 	
+
+	public function __toString()
+	{
+		return $this->id.' ';
+	}
 	
 	public function __construct()
 	{
 		//self::$historiInstance = new Histori($user,'tsdasd');
 		$this->histori = new ArrayCollection();
+		$this->tags = new ArrayCollection();
+	}
 	
+	
+	protected $tags;
+	public function getTags()
+	{
+		return $this->tags;
 	}
 	
 	/**
@@ -36,18 +48,27 @@ class Wlokno{
 	 * @ORM\JoinColumn(name="id_kabel", referencedColumnName="id")
 	 */
 	protected $id_kabel;
+
+
 	/**
-	 * @ORM\OneToOne(targetEntity="wlokno")
+	 * @ORM\ManyToOne(targetEntity="wlokno", inversedBy="inversedId_spaw_start")
 	 * @ORM\JoinColumn(name="id_spaw_start", referencedColumnName="id")
 	 */
 	protected $id_spaw_start;
 	/**
-	 * @ORM\OneToOne(targetEntity="wlokno")
+	 * @ORM\OneToMany(targetEntity="Wlokno", mappedBy="id_spaw_start")
+	 */
+	private $inversedId_spaw_start;
+	
+	/**
+	 * @ORM\ManyToOne(targetEntity="wlokno",inversedBy="inversedId_spaw_end")
 	 * @ORM\JoinColumn(name="id_spaw_end", referencedColumnName="id")
 	 */
 	protected $id_spaw_end;
-
-
+	/**
+	 * @ORM\OneToMany(targetEntity="Wlokno", mappedBy="id_spaw_end")
+	 */
+	private $inversedId_spaw_end;
     /**
      * Get id
      *
@@ -173,8 +194,5 @@ class Wlokno{
         return $this->id_histori_spaw_end;
     }
     
-    public function __toString()
-    {
-    	return $this->getTitle();
-    }
+   
 }

@@ -42,7 +42,23 @@ class MufaRepository extends EntityRepository
    	
    		 return $qb->getResult();
    }
-
+	
+   public function getMufyType($id,$tag){
+   
+   	$qb = $this->getEntityManager()
+   	->createQuery(
+   			'SELECT  m.id,m.kod,m.opis
+				    FROM SpsBundle:Mufa m
+   				LEFT JOIN SpsBundle:ObjectTyp o
+   				with m.id_object_type=o.id
+   				WHERE  o.name =:tag
+   				AND m.id_rejon=:id'
+              
+   	)->setParameter('tag', $tag)
+   	->setParameter('id', $id);
+   
+   	return $qb->getResult();
+   }
 
 
 

@@ -1,10 +1,21 @@
-{% extends 'SpsBundle::layout.html.twig' %} {% block title %} {%
-endblock %}
+{% extends 'SpsBundle::layout.html.twig' %} 
 
+
+{% block title %} {%endblock %}
+
+
+{% block site %}
+
+	{% if print =='true' %}
+		<div class="print">
+	{% endif %}
+{% endblock %}
 
 {% block main_opis %}	<h2> {{ rejon.nazwa }} >> {{ wlokna.0.id.id_mufa }} </h2> {% endblock %}
 
+
 {% block body %}
+
 
 
 
@@ -19,13 +30,13 @@ endblock %}
 	<table class="greenTable">
 		
 		<tr>
-			<td> Przebieg wlokna</td>
+		<td class="printblock"> Przebieg wlokna</td>
 			<td>KABEL</td>
 			<td> id </td>
 			<td>STAUS</td>
 			<td> id </td>
 			<td>KABEL</td>
-			<td> Przebieg wlokna</td>
+		<td class="printblock"> Przebieg wlokna</td>
 		</tr>
 			{% for wlokno in wlokna %}
 
@@ -33,12 +44,14 @@ endblock %}
 	
 		<tr>
 		{% if wlokno.id.kod is defined %}
-			<td> <a href="{{ path('SpsBundle_base_rejon_fiber',
+			
+				<td class="printblock"> <a href="{{ path('SpsBundle_base_rejon_fiber',
 	                        { 'id': rejon.id,
 	                         'id_mufa': wlokno.id.id_mufa,
 										'id_w':   wlokno.id.id_w	}
 	                )}}"><---</a>
-	      </td>
+	     	 	</td>
+	    
 			<td>
 				<font size="2">
 					{{ wlokno.id.producent }} 
@@ -76,19 +89,56 @@ endblock %}
 		   {%  else %}	
 				<td>  </td>
 				<td>  </td>
-				<td>  </td>
+				<td > </td>
 				
 			
 			
 			{% endif %}
 		
-			<td>
+			
 				{% if wlokno.id_spaw.kod is not defined %}
-					<font color=green>	WOLNE </font>
+					<td><font color=green>	WOLNE </font></td>
+					
+					
+						<form action="{{ path('SpsBundle_base_rejon_kabel_add_spaw',
+							  	{'id': rejon.id,
+                         'id_kabel': wlokno.id.id_k,
+								 'id_mufa':   wlokno.id.id_mufa})}}"
+							 	method="post"  {{ form_enctype(wlokno.form) }}>
+						
+							<td> 	
+						 </td>
+							<td>    
+					 	
+    							{{ form_errors(wlokno.form.id_prawa) }}
+ 							   {{ form_widget(wlokno.form.id_prawa) }}
+ 							   {{ form_widget(wlokno.form.id_lewa,{value : wlokno.id.id_w}) }}
+ 							   {{ form_widget(wlokno.form.side,{value : side}) }}
+    				
+    						</td>
+							<td class="printblock">  <input type="submit" value="Planuj" /> </td>
+							{{ form_row(wlokno.form._token) }}
+						</form>
+						
+						
 				{% else %}
-					<font color=red>	SPAW </font>
+					<form action="{{ path('SpsBundle_base_rejon_spaw_delete',
+							  	{'id': rejon.id,
+                         'id_kabel': wlokno.id.id_k,
+								 'id_mufa':   wlokno.id.id_mufa})}}"
+							 		method="post"> 
+ 								 {{ form_widget(dform.id_lewa,{value : wlokno.id.id_w}) }}	
+								 {{ form_widget(dform.id_prawa,{value : wlokno.id_spaw.id_w}) }}	
+  								 {{ form_widget(dform.side,{value : side}) }}
+							 	 {{ form_enctype(dform) }}
+						<td>
+							<font color=red>	SPAW </font>
+								<input type="submit" value="Usun" />
+						</td>
+					</form>
+							  	
 				{% endif %}
-			</td>
+			
 			
 			
 			{% if wlokno.id_spaw.kod is defined %}
@@ -141,24 +191,24 @@ endblock %}
                {%  endif %}
                 </a>
                 <font size="2">
-					{{ wlokno.id_spaw.producent }} 
-					{{ wlokno.id_spaw.j }}x{{ wlokno.id_spaw.tubs }}
-					({{ wlokno.id_spaw.standard }})
-				 </font>
-            </td>
-					
-					<td> <a href="{{ path('SpsBundle_base_rejon_fiber',
+						{{ wlokno.id_spaw.producent }} 
+						{{ wlokno.id_spaw.j }}x{{ wlokno.id_spaw.tubs }}
+						({{ wlokno.id_spaw.standard }})
+					 </font>
+            </td>	
+				<td class="printblock"> 
+					<a href="{{ path('SpsBundle_base_rejon_fiber',
 	                        { 'id': rejon.id,
-	                         'id_mufa': wlokno.id.id_mufa,
-										'id_w':   wlokno.id_spaw.id_w	}
-	                )}}">---></a>
+	                          'id_mufa': wlokno.id.id_mufa,
+									  'id_w':   wlokno.id_spaw.id_w	}
+	               			 )}}">--->
+	            </a>
+	         </td>
 			
 				
 		
 			{%  else %}	
-				<td>  </td>
-				<td>  </td>
-				<td>  </td>
+				
 				
 			
 			
@@ -169,7 +219,25 @@ endblock %}
 		  	{% endfor %}
 		</tr>
 	</table>
-
+<div class="printblock">
+	<div class="down"></div>
+	
+	{% if side =='end' %}
+				<a	href="{{ path('SpsBundle_base_rejon_kabelEnd_print',
+                { 'id': rejon.id,
+                  'id_kabel':  kabel.id,
+						'id_mufa': wlokna.0.id.id_mufa,
+						'print' : 'true'})}}"> 
+   {% else %}          		
+				<a
+					href="{{ path('SpsBundle_base_rejon_kabelStart_print',
+                     { 'id': rejon.id,
+                       'id_kabel': kabel.id,
+							  'id_mufa': wlokna.0.id.id_mufa,	
+							  'print' : 'true' })}}"	> 
+    {% endif %}
+	  Wersja do druku</a>
+</div>
 </article>
 
 {% endblock %}

@@ -114,7 +114,7 @@ endblock %} {% block main_opis %}
 					href="{{ path('SpsBundle_base_rejon_kabelStart',
                      { 'id': rejon.id,
                        'id_kabel': kabel.id,
-							  'id_mufa':  kabel.id_start	})}}"
+							'id_mufa':  kabel.id_start})}}"
 				> 
 					{{ kabel.kod_start }}
 				</a>
@@ -172,6 +172,35 @@ endblock %} {% block main_opis %}
 		</tr>
 	</table>
 	{% endif %}
+	
+	<div class=down></div>
+<h3>Mufy klienckie :</h3>
+	<table class="greenTable">
+
+		<tr>
+		
+			<td>ID</td>
+			<td>KOD</td>
+			<td>OPIS</td>
+			<td>MAPA</td>
+		</tr>
+		{% for mufa in mufyK %}
+		<tr>
+			
+			<td>{{ mufa.id }}<a href=""><font size=1>(edit)</font></a></td>
+			<td>{{ mufa.kod }}</td>
+			<td>{{ mufa.opis }}</td> 
+			<td><a href="
+				
+				{{ path('SpsBundle_base_rejon_focus',
+                        { 'id': rejon.id,
+                         'id_mufa_focus': mufa.id}) }}
+			">POKAZ</a> 	</td>
+		
+		
+		{% else %} {% endfor %}
+		</tr>
+	</table>
 </article>
 
 {% endblock %}

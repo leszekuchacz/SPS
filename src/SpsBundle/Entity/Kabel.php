@@ -25,7 +25,7 @@ class Kabel
 	
 	public function __toString()
 	{
-		return $this->getTitle();
+		return $this->producent;
 	}
 	
 	public static function loadValidatorMetadata(ClassMetadata $metadata)

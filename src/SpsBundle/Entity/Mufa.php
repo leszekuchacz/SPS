@@ -6,7 +6,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\Common\Collections\Doctrine\Common\Collections;
 /**
  * @ORM\Entity(repositoryClass="SpsBundle\Entity\Repository\MufaRepository")
  * @ORM\Table(name="mufa")

@@ -14,6 +14,102 @@ use SpsBundle\Entity\Standard;
 class WloknoRepository extends EntityRepository
 {
 	
+	
+	public function updateId_spaw_start($id_w,$id_f){
+		
+		if(!isset($id_f))
+		{
+			$id_f='null';
+		}
+
+		$qb = $this->getEntityManager()
+			 ->createQuery("UPDATE SpsBundle:Wlokno w
+								SET w.id_spaw_start=".$id_f."
+			 					WHERE w.id =".$id_w);
+		
+		
+		
+		$w=$qb->getResult();
+		return $w;
+		
+	}
+	public function updateId_spaw_end($id_w,$id_f){
+		
+		
+		if(!isset($id_f))
+		{
+			$id_f='null';
+		}
+		
+		$qb = $this->getEntityManager()
+		->createQuery("UPDATE SpsBundle:Wlokno w
+								SET w.id_spaw_end=".$id_f."
+			 					WHERE w.id =".$id_w);
+		
+		
+		
+		$w=$qb->getResult();
+		return $w;
+		
+	}
+	
+	public function getFiberToSpaw($id_mufa,$id_kabel){
+		
+
+		$qb = $this->getEntityManager()
+			 ->createQuery("
+			 		SELECT w.id,
+			 		
+			 		(SELECT mq3.kod
+					FROM SpsBundle:Wlokno wq3
+					LEFT JOIN SpsBundle:Kabel kq3 with wq3.id_kabel=kq3.id
+					LEFT JOIN SpsBundle:Mufa mq3 with kq3.id_mufa_end=mq3.id
+					WHERE wq3.id=w.id) as kod,
+			 		
+			 		(SELECT mq4.kod
+					FROM SpsBundle:Wlokno wq4
+					LEFT JOIN SpsBundle:Kabel kq4 with wq4.id_kabel=kq4.id
+					LEFT JOIN SpsBundle:Mufa mq4 with kq4.id_mufa_start=mq4.id
+					WHERE wq4.id=w.id) as kodd
+			 		
+			 		
+			 		FROM SpsBundle:Wlokno w
+						LEFT JOIN SpsBundle:Kabel k  with k.id = w.id_kabel
+						LEFT JOIN SpsBundle:Mufa m  with m.id = k.id_mufa_start 
+			 			LEFT JOIN SpsBundle:Mufa mm  with mm.id = k.id_mufa_end 
+			 		WHERE   
+			 			(k.id_mufa_start =".$id_mufa."
+			 			OR k.id_mufa_end =".$id_mufa.")
+			 		AND
+			 			(w.id_kabel!=".$id_kabel." )
+			 		AND
+			 			w.id  NOT IN 
+			 				(SELECT 
+						 		(SELECT wq.id FROM SpsBundle:Wlokno wq
+						 		WHERE wq.id = w1.id_spaw_start) 
+			 				FROM SpsBundle:Wlokno w1
+							LEFT JOIN SpsBundle:Kabel k1  with k1.id = w1.id_kabel
+			 				WHERE (k1.id_mufa_start = ".$id_mufa." OR k1.id_mufa_end =".$id_mufa.") 
+			 				AND (w1.id_spaw_start !=-1 ))
+			 		AND 
+			 			w.id  NOT IN 
+			 				(SELECT 
+						 		(SELECT wq2.id FROM SpsBundle:Wlokno wq2
+						 		WHERE wq2.id = w2.id_spaw_end) 
+			 				FROM SpsBundle:Wlokno w2
+							LEFT JOIN SpsBundle:Kabel k2  with k2.id = w2.id_kabel
+			 				WHERE (k2.id_mufa_start = ".$id_mufa." OR k2.id_mufa_end =".$id_mufa.") 
+			 				AND (w2.id_spaw_end !=-1 ))
+			 		
+			 		
+			 		");
+		
+		
+		$w=$qb->getResult();
+		return $w;
+	
+	}
+	
 	public function getFiberStart($id_w,$id_mufa){
 		
 		$colorPos= $this->getNumberOfStandard($id_w);
@@ -462,8 +558,6 @@ class WloknoRepository extends EntityRepository
 	
 
 	}
-	
-
 	
 	
 	public function  getFiberPosition($id){

@@ -23,7 +23,7 @@ class WezelRepository extends EntityRepository
 				    FROM SpsBundle:Wezel w
 					LEFT JOIN SpsBundle:Mufa m
 				with m.id_wezel =  w.id
-              '
+	 			WHERE m.id_rejon='.$id_rejon
 		);
 	
 		return $qb->getResult();
