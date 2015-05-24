@@ -21,7 +21,7 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		$k1 -> setIdMufaEnd($manager->merge($this->getReference('mk3')));
 		$k1 -> setLenght(253);
 		$k1 -> setProducent('Optix');
-		$k1 -> setStandard('Telefonika');
+	
 		$k1 -> setJ(8);
 		$k1 -> setTubs(1);
 		$k1 ->setIdKabelType($manager->merge($this->getReference('kt1')));
@@ -35,7 +35,7 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		$k1 -> setIdMufaEnd($manager->merge($this->getReference('mk2')));
 		$k1 -> setLenght(254);
 		$k1 -> setProducent('Teodor');
-		$k1 -> setStandard('Telefonika');
+	
 		$k1 -> setJ(8);
 		$k1 -> setTubs(1);
 		$k1 ->setIdKabelType($manager->merge($this->getReference('kt1')));
@@ -52,7 +52,7 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		$k1 -> setIdMufaEnd($manager->merge($this->getReference('m1')));
 		$k1 -> setLenght(358);
 		$k1 -> setProducent('Optix');
-		$k1 -> setStandard('Telefonika');
+
 		$k1 -> setJ(8);
 		$k1 -> setTubs(1);
 		$k1 ->setIdKabelType($manager->merge($this->getReference('kt1')));
@@ -73,7 +73,7 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		$k1 -> setIdMufaEnd($manager->merge($this->getReference('m2')));
 		$k1 -> setLenght(100);
 		$k1 -> setProducent('Optix');
-		$k1 -> setStandard('Telefonika');
+	
 		$k1 -> setJ(2);
 		$k1 -> setTubs(1);
 		$k1 ->setIdKabelType($manager->merge($this->getReference('kt1')));
@@ -88,7 +88,7 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		$k2 -> setIdMufaEnd($manager->merge($this->getReference('m3')));
 		$k2 -> setLenght(320);
 		$k2 -> setProducent('Optix');
-		$k2 -> setStandard('Telefonika');
+
 		$k2 -> setJ(8);
 		$k2 -> setTubs(1);
 		$k2->setIdStandard($manager->merge($this->getReference('s1')));
@@ -105,7 +105,7 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		$k4 -> setIdMufaEnd($manager->merge($this->getReference('m2')));
 		$k4 -> setLenght(231);
 		$k4 -> setProducent('Teodor');
-		$k4 -> setStandard('Telefonika');
+	
 		$k4 -> setJ(8);
 		$k4 -> setTubs(1);
 		$k4->setIdStandard($manager->merge($this->getReference('s1')));
@@ -121,7 +121,7 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		$k5 -> setIdMufaEnd($manager->merge($this->getReference('m6')));
 		$k5 -> setLenght(98);
 		$k5 -> setProducent('Teodor');
-		$k5 -> setStandard('Telefonika');
+
 		$k5 -> setJ(8);
 		$k5 -> setTubs(1);
 		$k5->setIdStandard($manager->merge($this->getReference('s1')));
@@ -138,7 +138,7 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		$k3 -> setIdMufaEnd($manager->merge($this->getReference('m4')));
 		$k3 -> setLenght(210);
 		$k3 -> setProducent('Dialog');
-		$k3 -> setStandard('Telefonika');
+
 		$k3 -> setJ(12);
 		$k3 -> setTubs(1);
 		$k3->setIdStandard($manager->merge($this->getReference('s1')));
@@ -153,7 +153,7 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		$kl -> setIdMufaEnd($manager->merge($this->getReference('kk1')));
 		$kl -> setLenght(123);
 		$kl -> setProducent('Dialog');
-		$kl -> setStandard('Telefonika');
+
 		$kl -> setJ(2);
 		$kl -> setTubs(1);
 		$kl->setIdStandard($manager->merge($this->getReference('s1')));
@@ -170,7 +170,7 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		$kl -> setIdMufaEnd($manager->merge($this->getReference('kk2')));
 		$kl -> setLenght(163);
 		$kl -> setProducent('Dialog');
-		$kl -> setStandard('Telefonika');
+	
 		$kl -> setJ(2);
 		$kl -> setTubs(1);
 		$kl->setIdStandard($manager->merge($this->getReference('s1')));
@@ -186,7 +186,7 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		$kl -> setIdMufaEnd($manager->merge($this->getReference('kk3')));
 		$kl -> setLenght(173);
 		$kl -> setProducent('Dialog');
-		$kl -> setStandard('Telefonika');
+
 		$kl -> setJ(2);
 		$kl -> setTubs(1);
 		$kl->setIdStandard($manager->merge($this->getReference('s1')));
@@ -205,7 +205,7 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		$r2k1 -> setIdMufaEnd($manager->merge($this->getReference('r2m2')));
 		$r2k1 -> setLenght(100);
 		$r2k1 -> setProducent('Optix');
-		$r2k1 -> setStandard('Telefonika');
+;
 		$r2k1 -> setJ(128);
 		$r2k1 -> setTubs(8);
 		$r2k1 ->setIdKabelType($manager->merge($this->getReference('kt1')));
@@ -221,7 +221,7 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		$r2k2 ->setIdObjectType($manager->merge($this->getReference('ot')));
 		$r2k2 -> setLenght(320);
 		$r2k2 -> setProducent('Teodor');
-		$r2k2 -> setStandard('Telefonika');
+
 		$r2k2 -> setJ(128);
 		$r2k2 -> setTubs(8);
 		$r2k2->setIdStandard($manager->merge($this->getReference('s1')));
@@ -257,7 +257,7 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		
 		$gk -> setLenght(234+$i);
 		$gk -> setProducent('Dialog');
-		$gk -> setStandard('Telefonika');
+	
 		$gk -> setJ(8);
 		$gk -> setTubs(2);
 		$gk ->setIdStandard($manager->merge($this->getReference('s1')));

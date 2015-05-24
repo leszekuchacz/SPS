@@ -1,0 +1,63 @@
+{%  extends 'SpsBundle::layout.html.twig' %}
+
+{% block main_opis %}	
+
+
+<a href="{{ path('SpsBundle_base_rejon', { 'id': rejon.id}) }}">
+
+<h2> {{ rejon.nazwa }} </h2> </a>{% endblock %}
+{% block body %}
+
+<h2> Dodaj nowy wezel: </h2>
+<table class=greenTable>
+
+<tr>
+	<td> Zmienna </td>
+	<td> Wartosc </td>
+</tr>
+
+<form action="{{ path('SpsBundle_add_object_to_rejon_post',
+							  	{'id': rejon.id,
+                         'type': 'wezel'})}}"
+							 	method="post"  {{ form_enctype(form) }}>
+						
+						<tr>
+							<td>ID</td>
+							<td>{{ nextid }}</td>
+						</tr>
+						
+						<tr>
+						
+							<td>KOD</td>
+							<td> 	
+								
+    							{{ form_errors(form.name) }}
+ 							   {{ form_widget(form.name) }}
+ 						  </td>
+ 						</tr>
+ 						<tr>	
+ 						<td> OPIS</td>   
+ 							  	<td> 	
+							
+    							{{ form_errors(form.opis) }}
+ 							   {{ form_widget(form.opis) }} 
+ 							   </td>
+ 						</tr> 
+ 							   
+ 							
+    				
+							
+							
+						
+							<td>    {{ form_widget(form.rejon,{value : rejon.id}) }}   	</td>
+					 	
+    						
+    					
+							<td class="printblock">  <input type="submit" value="Dodaj" /> </td>
+							{{ form_row(form._token) }}
+							</td>
+						</form>
+</tr>
+
+</table>
+{% endblock %}

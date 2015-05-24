@@ -1,0 +1,101 @@
+{%  extends 'SpsBundle::layout.html.twig' %}
+
+{% block main_opis %}	
+
+
+<a href="{{ path('SpsBundle_base_rejon', { 'id': rejon.id}) }}">
+
+<h2> {{ rejon.nazwa }} </h2> </a>{% endblock %}
+{% block body %}
+
+<h2> Dodaj nowa mufe: </h2>
+<table class=greenTable>
+
+<tr>
+	<td> Zmienna </td>
+	<td> Wartosc </td>
+</tr>
+
+<form action="{{ path('SpsBundle_add_object_to_rejon_post',
+							  	{'id': rejon.id,
+                         'type': 'mufa'})}}"
+							 	method="post"  {{ form_enctype(form) }}>
+						
+						<tr>
+							<td>ID</td>
+							<td>{{ nextid }}</td>
+						</tr>
+						<tr>
+						
+							<td>Object type</td>
+							<td> 	
+									trakt
+ 						  </td>
+ 						</tr>
+ 						<tr>
+						
+							<td> Wezel </td>
+							<td> 	
+									false
+ 						  </td>
+ 						</tr>
+ 						
+						<tr>
+						
+							<td>KOD</td>
+							<td> 	
+								
+    							{{ form_errors(form.kod) }}
+ 							   {{ form_widget(form.kod) }}
+ 						  </td>
+ 						</tr>
+ 						
+ 						<tr>	
+ 							<td> OPIS</td>   
+ 							  	<td> 	
+							
+    							{{ form_errors(form.opis) }}
+ 							   {{ form_widget(form.opis) }} 
+ 							   </td>
+ 						</tr> 
+ 						<tr>	
+ 							<td>	GPS_E <a href="http://www.mapcoordinates.net/en"> (default: 50.34566581)</a></td>   
+ 							  	<td> 	
+									
+    							{{ form_errors(form.gps_e) }}
+ 							   {{ form_widget(form.gps_e) }} 
+ 							   </td>
+ 						</tr> 	   
+ 						<tr>	
+ 							<td> GPS_N 	<a href="http://www.mapcoordinates.net/en">(default: 18.40775371)</a></td>   
+ 							  	<td> 	
+								
+    							{{ form_errors(form.gps_n) }}
+ 							   {{ form_widget(form.gps_n) }} 
+ 							   </td>
+ 						</tr> 	   
+ 						<tr>	
+ 							<td> Wybierz typ mufy</td>   
+ 							  	<td> 	
+									
+    							{{ form_errors(form.mufatype) }}
+ 							   {{ form_widget(form.mufatype) }} 
+    							
+ 							   </td>
+ 						</tr> 	
+    				
+							
+							
+						
+							<td>    {{ form_widget(form.rejon,{value : rejon.id}) }}   	</td>
+					 	
+    						
+    					
+							<td class="printblock">  <input type="submit" value="Dodaj" /> </td>
+							{{ form_row(form._token) }}
+							</td>
+						</form>
+</tr>
+
+</table>
+{% endblock %}

@@ -23,10 +23,24 @@ class WezelRepository extends EntityRepository
 				    FROM SpsBundle:Wezel w
 					LEFT JOIN SpsBundle:Mufa m
 				with m.id_wezel =  w.id
-	 			WHERE m.id_rejon='.$id_rejon
+	 			'
 		);
 	
 		return $qb->getResult();
 	}
+	public function getLastIdFromRejon($id_rejon){
+		
+		$qb = $this->getEntityManager()
+		->createQuery(
+				'SELECT  MAX(w.id)
+				FROM SpsBundle:Wezel w
+					LEFT JOIN SpsBundle:Rejon r
+				with w.id_rejon = r.id
+				WHERE r.id =:id'
+		)->setParameter('id', $id_rejon);
+		
+		return $qb->getSingleResult();
+		
+	}	
 	
 }

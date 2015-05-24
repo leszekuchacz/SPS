@@ -80,10 +80,6 @@ SpsBundle_base_rejon_kabel_add_spaw:
       id_kabel: \d+
       id_mufa: \d+
       
-
-      
-
-
 SpsBundle_base_rejon_fiber:
     pattern: /base/{id}/fiber/{id_mufa}/{id_w}
     defaults: { _controller: SpsBundle:Base:showFiber }
@@ -127,14 +123,28 @@ SpsBundle_add_mufa:
     defaults: { _controller: SpsBundle:Add:mufa }
     requirements:
       _method : GET 
-            
+      
 SpsBundle_add_mufa_post:
     pattern: /add/mufa
     defaults: { _controller: SpsBundle:Add:mufaReq }
     requirements:
       _method : POST
   
-      
+SpsBundle_add_object_to_rejon:
+    pattern: /add/{type}/rejon/{id}
+    defaults: { _controller: SpsBundle:Add:addObjectToRejon }
+    requirements:
+      _method : GET 
+      id: \d+
+      type : .+
+
+SpsBundle_add_object_to_rejon_post:
+    pattern: /add/{type}/rejon/{id}
+    defaults: { _controller: SpsBundle:Add:postAddObjectToRejon }
+    requirements:
+      _method : POST 
+      id: \d+
+      type : .+      
 
       
 SpsBundle_add_kabel:

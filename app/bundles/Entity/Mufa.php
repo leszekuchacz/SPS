@@ -150,7 +150,7 @@ class Mufa{
 	protected $opis;
 
 	/**
-	 * @ORM\Column(type="float")
+	 * @ORM\Column(type="float",options={"default": 18.40775371})
 	 */
 	protected $gps_n;
 	/**
@@ -158,7 +158,7 @@ class Mufa{
 	 */
 	protected $gps_e;
 	/**
-	 * @ORM\Column(type="integer")
+	 * @ORM\Column(type="integer",options={"default": 50.34566581})
 	 */
 
 

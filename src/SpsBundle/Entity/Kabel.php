@@ -95,7 +95,7 @@ class Kabel
 	 * @ORM\ManyToOne(targetEntity="SpsBundle\Entity\Wezel", inversedBy="id_kabel")
 	 * @ORM\JoinColumn(name="id_wezel", referencedColumnName="id", nullable=true)
 	 */
-	protected $id_wezel;
+	protected $id_wezel=null;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="SpsBundle\Entity\Standard", inversedBy="idKabel")
@@ -158,12 +158,8 @@ class Kabel
 	 * @ORM\Column(type="integer")
 	 */
 	protected $lenght;
-	/**
-	 * @ORM\Column(type="string", length=100)
-	 * @deprecated deprecated since db
-	 */
-	protected $standard;
 	
+  
 
     /**
      * Get id
@@ -268,96 +264,26 @@ class Kabel
     }
 
     /**
-     * Set standard
+     * Set id_wezel
      *
-     * @param string $standard
+     * @param \SpsBundle\Entity\Wezel $idWezel
      * @return Kabel
-     *@deprecated deprecated since db
      */
-    public function setStandard($standard)
+    public function setIdWezel(\SpsBundle\Entity\Wezel $idWezel = null)
     {
-        $this->standard = $standard;
+        $this->id_wezel = $idWezel;
 
         return $this;
     }
 
     /**
-     * Get standard
-     *@deprecated deprecated since db
-     * @return string 
-     */
-    public function getStandard()
-    {
-        return $this->standard;
-    }
-
-    /**
-     * Set id_histori
+     * Get id_wezel
      *
-     * @param \SpsBundle\Entity\Histori $idHistori
-     * @return Kabel
+     * @return \SpsBundle\Entity\Wezel 
      */
-    public function setIdHistori(\SpsBundle\Entity\Histori $idHistori = null)
+    public function getIdWezel()
     {
-        $this->id_histori = $idHistori;
-
-        return $this;
-    }
-
-    /**
-     * Get id_histori
-     *
-     * @return \SpsBundle\Entity\Histori 
-     */
-    public function getIdHistori()
-    {
-        return $this->id_histori;
-    }
-
-    /**
-     * Set id_mufa_start
-     *
-     * @param \SpsBundle\Entity\Mufa $idMufaStart
-     * @return Kabel
-     */
-    public function setIdMufaStart(\SpsBundle\Entity\Mufa $idMufaStart = null)
-    {
-        $this->id_mufa_start = $idMufaStart;
-
-        return $this;
-    }
-
-    /**
-     * Get id_mufa_start
-     *
-     * @return \SpsBundle\Entity\Mufa 
-     */
-    public function getIdMufaStart()
-    {
-        return $this->id_mufa_start;
-    }
-
-    /**
-     * Set id_mufa_end
-     *
-     * @param \SpsBundle\Entity\Mufa $idMufaEnd
-     * @return Kabel
-     */
-    public function setIdMufaEnd(\SpsBundle\Entity\Mufa $idMufaEnd = null)
-    {
-        $this->id_mufa_end = $idMufaEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get id_mufa_end
-     *
-     * @return \SpsBundle\Entity\Mufa 
-     */
-    public function getIdMufaEnd()
-    {
-        return $this->id_mufa_end;
+        return $this->id_wezel;
     }
 
     /**
@@ -450,32 +376,9 @@ class Kabel
     }
 
     /**
-     * Set id_object_type
-     *
-     * @param \SpsBundle\Entity\ObjectType $idObjectType
-     * @return Kabel
-     */
-    public function setIdObjectType(\SpsBundle\Entity\ObjectTyp $idObjectType = null)
-    {
-        $this->id_object_type = $idObjectType;
-
-        return $this;
-    }
-
-    /**
-     * Get id_object_type
-     *
-     * @return \SpsBundle\Entity\ObjectType 
-     */
-    public function getIdObjectType()
-    {
-        return $this->id_object_type;
-    }
-
-    /**
      * Set id_kabel_type
      *
-     * @param \SpsBundle\Entity\KabelType $idKabelType
+     * @param \SpsBundle\Entity\KabelTyp $idKabelType
      * @return Kabel
      */
     public function setIdKabelType(\SpsBundle\Entity\KabelTyp $idKabelType = null)
@@ -488,7 +391,7 @@ class Kabel
     /**
      * Get id_kabel_type
      *
-     * @return \SpsBundle\Entity\KabelType 
+     * @return \SpsBundle\Entity\KabelTyp 
      */
     public function getIdKabelType()
     {
@@ -496,25 +399,71 @@ class Kabel
     }
 
     /**
-     * Set id_wezel
+     * Set id_object_type
      *
-     * @param \SpsBundle\Entity\Wezel $idWezel
+     * @param \SpsBundle\Entity\ObjectTyp $idObjectType
      * @return Kabel
      */
-    public function setIdWezel(\SpsBundle\Entity\Wezel $idWezel = null)
+    public function setIdObjectType(\SpsBundle\Entity\ObjectTyp $idObjectType = null)
     {
-        $this->id_wezel = $idWezel;
+        $this->id_object_type = $idObjectType;
 
         return $this;
     }
 
     /**
-     * Get id_wezel
+     * Get id_object_type
      *
-     * @return \SpsBundle\Entity\Wezel 
+     * @return \SpsBundle\Entity\ObjectTyp 
      */
-    public function getIdWezel()
+    public function getIdObjectType()
     {
-        return $this->id_wezel;
+        return $this->id_object_type;
+    }
+
+    /**
+     * Set id_mufa_start
+     *
+     * @param \SpsBundle\Entity\Mufa $idMufaStart
+     * @return Kabel
+     */
+    public function setIdMufaStart(\SpsBundle\Entity\Mufa $idMufaStart = null)
+    {
+        $this->id_mufa_start = $idMufaStart;
+
+        return $this;
+    }
+
+    /**
+     * Get id_mufa_start
+     *
+     * @return \SpsBundle\Entity\Mufa 
+     */
+    public function getIdMufaStart()
+    {
+        return $this->id_mufa_start;
+    }
+
+    /**
+     * Set id_mufa_end
+     *
+     * @param \SpsBundle\Entity\Mufa $idMufaEnd
+     * @return Kabel
+     */
+    public function setIdMufaEnd(\SpsBundle\Entity\Mufa $idMufaEnd = null)
+    {
+        $this->id_mufa_end = $idMufaEnd;
+
+        return $this;
+    }
+
+    /**
+     * Get id_mufa_end
+     *
+     * @return \SpsBundle\Entity\Mufa 
+     */
+    public function getIdMufaEnd()
+    {
+        return $this->id_mufa_end;
     }
 }

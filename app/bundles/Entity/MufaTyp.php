@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
  /**
- * @ORM\Entity(repositoryClass="SpsBundle\Entity\Repository\MufaTypeRepository")
+ * @ORM\Entity(repositoryClass="SpsBundle\Entity\Repository\Types\MufaTypRepository")
  * @ORM\Table(name="mufa_type")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -47,16 +47,18 @@ class MufaTyp
 	 */
 	protected $tag=null;
 	/**
-	 * @ORM\Column(type="string", length=100,nullable=true)
-	 *
+	 * @ORM\ManyToOne(targetEntity="ObjectTyp", inversedBy="inverseMufaTyp")
+	 * @ORM\JoinColumn(name="id_object_type", referencedColumnName="id",nullable=true)
 	 */
-	protected $type=null;
+	protected $id_object_type=null;
 	
 	/**
 	 * @ORM\OneToMany(targetEntity="Mufa", mappedBy="id_mufa_type")
 	 */
 	private $inverseMufa;
 	
+   
+
    
 
     /**
@@ -139,26 +141,26 @@ class MufaTyp
     }
 
     /**
-     * Set type
+     * Set id_object_type
      *
-     * @param string $type
+     * @param \SpsBundle\Entity\ObjectTyp $idObjectType
      * @return MufaTyp
      */
-    public function setType($type)
+    public function setIdObjectType(\SpsBundle\Entity\ObjectTyp $idObjectType = null)
     {
-        $this->type = $type;
+        $this->id_object_type = $idObjectType;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get id_object_type
      *
-     * @return string 
+     * @return \SpsBundle\Entity\ObjectTyp 
      */
-    public function getType()
+    public function getIdObjectType()
     {
-        return $this->type;
+        return $this->id_object_type;
     }
 
     /**

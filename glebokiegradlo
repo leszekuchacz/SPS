@@ -1,6 +1,6 @@
 echo 'krece lody'
 sudo chmod -R 777 *
-echo ' wycieram tylek'
+echo 'wycieram tylek'
 php app/console cache:clear --env=dev --no-debug
 echo 'baza drop'
 php app/console doctrine:database:drop --force
@@ -12,4 +12,5 @@ echo 'wali date'
 php app/console doctrine:schema:validate
 echo 'laduje dane'
 php app/console doctrine:fixtures:load
-'DONE'
+echo 'DONE BAZA, testujemy...'
+phpunit -c app/ 

@@ -35,6 +35,7 @@ class MufaFixtures extends AbstractFixture implements OrderedFixtureInterface {
 	
 		$w1 = new Mufa();
 		$w1 -> setIdRejon($manager->merge($this->getReference('r1')));
+		$w1 -> setIdObjectType($manager->merge($this->getReference('ot')));
 		$w1 -> setKod('KOZ1');
 		$w1 -> setOpis('Kozielska 48 ');
 		$w1 -> setGpsE(50.326453);

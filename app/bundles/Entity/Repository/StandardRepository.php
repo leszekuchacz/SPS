@@ -14,4 +14,18 @@ use SpsBundle\Entity\Standard;
 class StandardRepository extends EntityRepository
 {
 	
+	
+	public function getAll(){
+	
+		$qb = $this->getEntityManager()
+		->createQuery(
+				'SELECT s.nazwa, s.id
+				FROM SpsBundle:Standard s'
+	
+		);
+	
+		return $qb->getResult();
+	}
+	
+	
 }

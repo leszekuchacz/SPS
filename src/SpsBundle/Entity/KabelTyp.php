@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
  /**
- * @ORM\Entity(repositoryClass="SpsBundle\Entity\Repository\KabelTypeRepository")
+ * @ORM\Entity(repositoryClass="SpsBundle\Entity\Repository\Types\KabelTypRepository")
  * @ORM\Table(name="kabel_type")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -54,6 +54,12 @@ class KabelTyp
 	 */
 	private $inverseKabel;
 	
+	/**
+	 * @ORM\ManyToOne(targetEntity="ObjectTyp", inversedBy="inverseKabelTyp")
+	 * @ORM\JoinColumn(name="id_object_type", referencedColumnName="id",nullable=true)
+	 */
+	protected $id_object_type=null;
+   
 
     /**
      * Get id
@@ -69,7 +75,7 @@ class KabelTyp
      * Set name
      *
      * @param string $name
-     * @return Type
+     * @return KabelTyp
      */
     public function setName($name)
     {
@@ -89,58 +95,10 @@ class KabelTyp
     }
 
     /**
-     * Set tag
-     *
-     * @param string $tag
-     * @return Type
-     */
-    public function setTag($tag)
-    {
-        $this->tag = $tag;
-
-        return $this;
-    }
-
-    /**
-     * Get tag
-     *
-     * @return string 
-     */
-    public function getTag()
-    {
-        return $this->tag;
-    }
-
-  
-
-    /**
-     * Set inverseKabel
-     *
-     * @param \SpsBundle\Entity\Kabel $inverseKabel
-     * @return Type
-     */
-    public function setInverseKabel(\SpsBundle\Entity\Kabel $inverseKabel = null)
-    {
-        $this->inverseKabel = $inverseKabel;
-
-        return $this;
-    }
-
-    /**
-     * Get inverseKabel
-     *
-     * @return \SpsBundle\Entity\Kabel 
-     */
-    public function getInverseKabel()
-    {
-        return $this->inverseKabel;
-    }
-
-    /**
      * Set value
      *
      * @param integer $value
-     * @return Type
+     * @return KabelTyp
      */
     public function setValue($value)
     {
@@ -160,10 +118,33 @@ class KabelTyp
     }
 
     /**
+     * Set tag
+     *
+     * @param string $tag
+     * @return KabelTyp
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Get tag
+     *
+     * @return string 
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
      * Set type
      *
      * @param string $type
-     * @return Type
+     * @return KabelTyp
      */
     public function setType($type)
     {
@@ -180,11 +161,6 @@ class KabelTyp
     public function getType()
     {
         return $this->type;
-    }
-    
-    public function __toString()
-    {
-    	return $this->name.' ||| '.$this->tag;
     }
 
     /**
@@ -208,5 +184,38 @@ class KabelTyp
     public function removeInverseKabel(\SpsBundle\Entity\Kabel $inverseKabel)
     {
         $this->inverseKabel->removeElement($inverseKabel);
+    }
+
+    /**
+     * Get inverseKabel
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInverseKabel()
+    {
+        return $this->inverseKabel;
+    }
+
+    /**
+     * Set id_object_type
+     *
+     * @param \SpsBundle\Entity\ObjectTyp $idObjectType
+     * @return KabelTyp
+     */
+    public function setIdObjectType(\SpsBundle\Entity\ObjectTyp $idObjectType = null)
+    {
+        $this->id_object_type = $idObjectType;
+
+        return $this;
+    }
+
+    /**
+     * Get id_object_type
+     *
+     * @return \SpsBundle\Entity\ObjectTyp 
+     */
+    public function getIdObjectType()
+    {
+        return $this->id_object_type;
     }
 }

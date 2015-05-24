@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
  /**
- * @ORM\Entity(repositoryClass="SpsBundle\Entity\Repository\ObjectTypeRepository")
+ * @ORM\Entity(repositoryClass="SpsBundle\Entity\Repository\Types\ObjectTypRepository")
  * @ORM\Table(name="object_type")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -17,6 +17,8 @@ class ObjectTyp
 	{
 		$this->inverseMufa = new ArrayCollection();
 		$this->inverseKabel = new ArrayCollection();
+		$this->inverseMufaTyp = new ArrayCollection();
+		$this->inverseKabelTyp = new ArrayCollection();
 	}
 	
 	public function __toString()
@@ -47,6 +49,19 @@ class ObjectTyp
 	 * @ORM\OneToMany(targetEntity="Kabel", mappedBy="id_object_type")
 	 */
 	private $inverseKabel;
+	
+
+	/**
+	 * @ORM\OneToMany(targetEntity="MufaTyp", mappedBy="id_object_type")
+	 */
+	private $inverseMufaTyp;
+	
+
+	/**
+	 * @ORM\OneToMany(targetEntity="KabelTyp", mappedBy="id_object_type")
+	 */
+	private $inverseKabelTyp;
+	
 	
 
    
@@ -148,5 +163,71 @@ class ObjectTyp
     public function getInverseKabel()
     {
         return $this->inverseKabel;
+    }
+
+    /**
+     * Add inverseMufaTyp
+     *
+     * @param \SpsBundle\Entity\MufaTyp $inverseMufaTyp
+     * @return ObjectTyp
+     */
+    public function addInverseMufaTyp(\SpsBundle\Entity\MufaTyp $inverseMufaTyp)
+    {
+        $this->inverseMufaTyp[] = $inverseMufaTyp;
+
+        return $this;
+    }
+
+    /**
+     * Remove inverseMufaTyp
+     *
+     * @param \SpsBundle\Entity\MufaTyp $inverseMufaTyp
+     */
+    public function removeInverseMufaTyp(\SpsBundle\Entity\MufaTyp $inverseMufaTyp)
+    {
+        $this->inverseMufaTyp->removeElement($inverseMufaTyp);
+    }
+
+    /**
+     * Get inverseMufaTyp
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInverseMufaTyp()
+    {
+        return $this->inverseMufaTyp;
+    }
+
+    /**
+     * Add inverseKabelTyp
+     *
+     * @param \SpsBundle\Entity\KabelTyp $inverseKabelTyp
+     * @return ObjectTyp
+     */
+    public function addInverseKabelTyp(\SpsBundle\Entity\KabelTyp $inverseKabelTyp)
+    {
+        $this->inverseKabelTyp[] = $inverseKabelTyp;
+
+        return $this;
+    }
+
+    /**
+     * Remove inverseKabelTyp
+     *
+     * @param \SpsBundle\Entity\KabelTyp $inverseKabelTyp
+     */
+    public function removeInverseKabelTyp(\SpsBundle\Entity\KabelTyp $inverseKabelTyp)
+    {
+        $this->inverseKabelTyp->removeElement($inverseKabelTyp);
+    }
+
+    /**
+     * Get inverseKabelTyp
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInverseKabelTyp()
+    {
+        return $this->inverseKabelTyp;
     }
 }

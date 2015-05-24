@@ -46,6 +46,7 @@ class TypeFixtures extends AbstractFixture implements OrderedFixtureInterface {
 		
 		
 		$mt =new MufaTyp();
+		$mt -> setIdObjectType($manager->merge($this->getReference('ow')));
 		$mt->setName('Przełącznica światłowodowa 24-SC');
 		$mt->setTag('prze24');
 	
@@ -53,6 +54,7 @@ class TypeFixtures extends AbstractFixture implements OrderedFixtureInterface {
 		$this->addReference('mt1',$mt);
 		
 		$mt =new MufaTyp();
+		$mt -> setIdObjectType($manager->merge($this->getReference('ow')));
 		$mt->setName('Przełącznica światłowodowa 48-SC');
 		$mt->setTag('prze48');
 		$manager->persist($mt);
@@ -61,18 +63,23 @@ class TypeFixtures extends AbstractFixture implements OrderedFixtureInterface {
 		$mt =new MufaTyp();
 		$mt->setName('Przełącznica światłowodowa 96-SC');
 		$mt->setTag('prze96');
+
+		$mt -> setIdObjectType($manager->merge($this->getReference('ow')));
 		$manager->persist($mt);
 		$this->addReference('mt3',$mt);
 		
 
 		$mt =new MufaTyp();
 		$mt->setName('Mala biała mufa GPON  8-SC');
+		
+		$mt -> setIdObjectType($manager->merge($this->getReference('ot')));
 		$mt->setTag('gpon8');
 		$manager->persist($mt);
 		$this->addReference('mt4',$mt);
 		
 		$mt =new MufaTyp();
 		$mt->setName('Duża biala mufa GPON  16-SC');
+		$mt -> setIdObjectType($manager->merge($this->getReference('ot')));
 		$mt->setTag('gpon16');
 		$manager->persist($mt);
 		$this->addReference('mt5',$mt);
@@ -80,17 +87,20 @@ class TypeFixtures extends AbstractFixture implements OrderedFixtureInterface {
 		
 		$mt =new MufaTyp();
 		$mt->setName('Czarna duza mufa ');
+		$mt -> setIdObjectType($manager->merge($this->getReference('ot')));
 		$mt->setTag('czaduz');
 		$manager->persist($mt);
 		$this->addReference('mt6',$mt);
 		
 		$mt =new MufaTyp();
 		$mt->setName('Czarna mala mufa ');
+		$mt -> setIdObjectType($manager->merge($this->getReference('ot')));
 		$mt->setTag('czamal');
 		$manager->persist($mt);
 		$this->addReference('mt7',$mt);
 		
 		$mt =new MufaTyp();
+		$mt -> setIdObjectType($manager->merge($this->getReference('ow')));
 		$mt->setName('Kaseta 8-SC ');
 		$mt->setTag('kaseta8');
 		$manager->persist($mt);
@@ -99,6 +109,7 @@ class TypeFixtures extends AbstractFixture implements OrderedFixtureInterface {
 		
 		$mt =new MufaTyp();
 		$mt->setName('Kaset u klienta ');
+		$mt -> setIdObjectType($manager->merge($this->getReference('ok')));
 		$mt->setTag('kaseta');
 		$manager->persist($mt);
 		$this->addReference('mt9',$mt);

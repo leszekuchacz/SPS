@@ -13,6 +13,20 @@ use Doctrine\ORM\EntityRepository;
 class MufaRepository extends EntityRepository
 {
 
+	
+	
+	public function getLastIdFromRejon($id_rejon){
+	
+		$qb = $this->getEntityManager()
+		->createQuery(
+				'SELECT  MAX(m.id)
+				FROM SpsBundle:Mufa m
+					LEFT JOIN SpsBundle:Rejon r
+				with m.id_rejon = r.id');
+	
+		return $qb->getSingleResult();
+	
+	}
 
     public function getMufaKodFromID($id_mufa){
 
@@ -42,7 +56,24 @@ class MufaRepository extends EntityRepository
    	
    		 return $qb->getResult();
    }
-	
+   public function getAllFromRejon($id_rejon,$type){
+   
+   	$qb = $this->getEntityManager()
+   	->createQuery(
+   			'SELECT  m.id,m.kod,m.opis
+				    FROM SpsBundle:Mufa m
+   				LEFT JOIN SpsBundle:Rejon r 
+   					with m.id_rejon = r.id
+   				LEFT JOIN SpsBundle:ObjectTyp o
+   					with o.id = m.id_object_type
+   				WHERE r.id=:id
+   				AND o.name=:type
+              '
+   	)->setParameter('id', $id_rejon)
+   	->setParameter('type', $type);
+   
+   	return $qb->getResult();
+   }
    public function getMufyType($id,$tag){
    
    	$qb = $this->getEntityManager()

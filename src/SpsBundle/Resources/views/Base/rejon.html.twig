@@ -18,7 +18,83 @@ endblock %} {% block main_opis %}
 		{{ render (controller('SpsBundle:Map:show',{'id' : rejon.id })) }}
 	
 	{% endif %}
-	<div class=down></div>
+	
+	<h3>Dodaj do traktu :</h3>
+	
+	<table>
+	<td>
+		<a href="
+			{{ path('SpsBundle_add_object_to_rejon',
+					{'id' : rejon.id,
+					'type': 'wezel'
+			})}}
+			" class=blueBtn> 
+			Wezeł
+	  </a>
+	</td>
+	<td>
+		<a href="
+			{{ path('SpsBundle_add_object_to_rejon',
+					{'id' : rejon.id,
+					'type': 'panel'
+			})}}
+			" class=blueBtn> 
+			Przełącznice
+	  </a>
+	</td>
+		<td>
+		<a href="
+			{{ path('SpsBundle_add_object_to_rejon',
+					{'id' : rejon.id,
+					'type': 'patch'
+			})}}
+			" class=blueBtn> 
+			Patchcord
+	  </a>
+	</td>
+	<td>
+		<a href="
+			{{ path('SpsBundle_add_object_to_rejon',
+					{'id' : rejon.id,
+					'type': 'mufa'
+			})}}
+			" class=blueBtn> 
+			Mufe
+	  </a>
+	</td>
+	<td>
+		<a href="
+			{{ path('SpsBundle_add_object_to_rejon',
+					{'id' : rejon.id,
+					'type': 'kabel'
+			})}}
+			" class=blueBtn> 
+			Kabel trakotowy
+	  </a>
+	</td>
+
+	<td>
+		<a href="
+			{{ path('SpsBundle_add_object_to_rejon',
+					{'id' : rejon.id,
+					'type': 'klient'
+			})}}
+			" class=blueBtn> 
+			Klienta
+	  </a>
+	</td>
+	<td>
+		<a href="
+			{{ path('SpsBundle_add_object_to_rejon',
+					{'id' : rejon.id,
+					'type': 'split'
+			})}}
+			" class=blueBtn> 
+			Splitter
+	  </a>
+	</td>
+	</table>
+
 	<h3>Węzły :</h3>
 	<table class="greenTable">
 

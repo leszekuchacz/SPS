@@ -1,6 +1,7 @@
 {% extends 'SpsBundle::layout.html.twig' %} {% block title %} {%
 endblock %} {% block main_opis %}
-<h2>{{ rejon.nazwa }}</h2>
+<a href="{{ path('SpsBundle_base_rejon', { 'id': rejon.id}) }}">
+<h2>{{ rejon.nazwa }}</h2></a>
 {% endblock %} {% block body %}
 
 

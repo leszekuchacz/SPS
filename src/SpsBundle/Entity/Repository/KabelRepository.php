@@ -24,6 +24,23 @@ class KabelRepository extends EntityRepository {
 	}
 	
 	
+	public function getLastIdFromRejon($id_rejon){
+	
+		$qb = $this->getEntityManager()
+		->createQuery(
+				'SELECT  MAX(k.id)
+				FROM SpsBundle:Kabel k
+				LEFT JOIN SpsBundle:Mufa m
+					with k.id_mufa_start= m.id
+				LEFT JOIN SpsBundle:Rejon r
+					with m.id_rejon = r.id '
+				
+		);
+	
+		return $qb->getSingleResult();
+	}
+	
+	
 public function getKable() {
 		$qb = $this->getEntityManager ()->createQuery ( "
 				SELECT
@@ -31,12 +48,14 @@ public function getKable() {
 						k.id,
 						k.lenght,
 						k.producent,
-						k.standard,
+						s.nazwa as standard,
 						k.tubs,
 				(SELECT m.kod FROM SpsBundle:Mufa m WHERE m.id=k.id_mufa_start) as kod_start,
 				(SELECT mm.kod FROM SpsBundle:Mufa mm WHERE mm.id= k.id_mufa_end) as kod_end
 			
 				FROM SpsBundle:Kabel k
+				LEFT JOIN SpsBundle:Stanadrd s
+					with s.id = k.id_standrd
 				 
 				
 				" )->getResult ();
@@ -93,17 +112,22 @@ public function getKable() {
 				k.id,
 				k.lenght,
 				k.producent,
-				k.standard,
+				s.nazwa as standard,
 				k.tubs,
 				(SELECT mm.kod FROM SpsBundle:Mufa mm WHERE mm.id=k.id_mufa_start) as kod_start,
 				(SELECT mmm.kod FROM SpsBundle:Mufa mmm WHERE mmm.id=k.id_mufa_end) as kod_end,
 				(SELECT mz.id FROM SpsBundle:Mufa mz WHERE mz.id=k.id_mufa_start) as id_start,
 				(SELECT mzz.id FROM SpsBundle:Mufa mzz WHERE mzz.id=k.id_mufa_end) as id_end
 				FROM SpsBundle:Kabel k
-				LEFT JOIN SpsBundle:Mufa m with  m.id= k.id_mufa_start
-                LEFT JOIN SpsBundle:Rejon r with  r.id= m.id_rejon
-					LEFT JOIN SpsBundle:ObjectTyp ot with ot.id = k.id_object_type
-                WHERE r.id = :id AND ot.name=:tag
+				LEFT JOIN SpsBundle:Mufa m 
+					with  m.id= k.id_mufa_start
+            LEFT JOIN SpsBundle:Rejon r 
+					with  r.id= m.id_rejon
+				LEFT JOIN SpsBundle:ObjectTyp ot 
+					with ot.id = k.id_object_type
+            LEFT JOIN SpsBundle:Standard s
+					with s.id = k.id_standard    
+				WHERE r.id = :id AND ot.name=:tag
 				ORDER BY r.id" )->setParameter ( 'id', $id_rejon )
 					->setParameter ( 'tag', $tag );
 	
@@ -129,13 +153,18 @@ public function getKable() {
 						k.id,
 						k.lenght,
 						k.producent,
-						k.standard,
+						s.nazwa as standard,
 						k.tubs
 				FROM SpsBundle:Kabel k
-				LEFT JOIN SpsBundle:Mufa m with  m.id= k.id_mufa_start
-                LEFT JOIN SpsBundle:Rejon r with  r.id= m.id_rejon
-					LEFT JOIN SpsBundle:ObjectTyp ot with ot.id = k.id_object_type
-                WHERE r.id = :id AND ot.name=:tag
+				LEFT JOIN SpsBundle:Mufa m 
+					with  m.id= k.id_mufa_start
+            LEFT JOIN SpsBundle:Rejon r 
+					with  r.id= m.id_rejon
+				LEFT JOIN SpsBundle:ObjectTyp ot 
+					with ot.id = k.id_object_type
+				LEFT JOIN SpsBUndle:Standard s
+					with s.id = k.id_standard
+				WHERE r.id = :id AND ot.name=:tag
 				ORDER BY r.id" )->setParameter ( 'id', $id_rejon )
 									->setParameter ( 'tag', $tag );
 		

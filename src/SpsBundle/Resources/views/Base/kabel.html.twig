@@ -11,7 +11,7 @@
 	{% endif %}
 {% endblock %}
 
-{% block main_opis %}	<h2> {{ rejon.nazwa }} >> {{ wlokna.0.id.id_mufa }} </h2> {% endblock %}
+{% block main_opis %}	<a href="{{ path('SpsBundle_base_rejon', { 'id': rejon.id}) }}"><h2> {{ rejon.nazwa }}</a >> {{ wlokna.0.id.id_mufa }} </h2> {% endblock %}
 
 
 {% block body %}
