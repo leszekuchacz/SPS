@@ -117,6 +117,6 @@ class KabelRejonType extends AbstractType
 	 */
 	public function getName()
 	{
-		return 'spsbundle_mufarejon';
+		return 'spsbundle_kabelrejon';
 	}
 }

@@ -19,9 +19,30 @@ class WloknoFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		
 		
 		
+		// Wlokna do prze 
 		
+		for ($i=0; $i<=7;$i++){
+			$kl[$i] = new Wlokno();
+			$kl[$i] -> setIdKabel($manager->merge($this->getReference('wkp1')));
+			$manager-> persist($kl[$i]);
+			$this->addReference('wkps1'.$i,$kl[$i]);
+		
+		}
+		for ($i=0; $i<=7;$i++){
+			$kl[$i] = new Wlokno();
+			$kl[$i] -> setIdKabel($manager->merge($this->getReference('wkp2')));
+			$manager-> persist($kl[$i]);
+			$this->addReference('wkps2'.$i,$kl[$i]);
+		
+		}
+		for ($i=0; $i<=7;$i++){
+			$kl[$i] = new Wlokno();
+			$kl[$i] -> setIdKabel($manager->merge($this->getReference('wkp3')));
+			$manager-> persist($kl[$i]);
+			$this->addReference('wkps3'.$i,$kl[$i]);
+		
+		}
 		$k1 = new Kabel();
-		
 		//$k1 = $manager->merge($this->getReference('k1'));
 		//$k1= $manager->merge($this->getReference('k1')->getJ());
 		global $w1,$w2,$w3,$w4,$w5,$kl,$kl2,$kl3;

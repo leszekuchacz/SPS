@@ -42,6 +42,14 @@ class Wezel
 	 * @ORM\OneToMany(targetEntity="Mufa", mappedBy="id_wezel")
 	 */
 	protected $id_mufa;
+	
+	/**
+	 * @ORM\OneToMany(targetEntity="Mufa", mappedBy="id_panel")
+	 */
+	protected $id_panel;
+	/**
+	
+	
 	/**
 	 * @ORM\OneToMany(targetEntity="Kabel", mappedBy="id_wezel")
 	 */
@@ -56,4 +64,149 @@ class Wezel
 	protected $opis;
 	
 	
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Wezel
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set opis
+     *
+     * @param string $opis
+     * @return Wezel
+     */
+    public function setOpis($opis)
+    {
+        $this->opis = $opis;
+
+        return $this;
+    }
+
+    /**
+     * Get opis
+     *
+     * @return string 
+     */
+    public function getOpis()
+    {
+        return $this->opis;
+    }
+
+    /**
+     * Set id_rejon
+     *
+     * @param \SpsBundle\Entity\Rejon $idRejon
+     * @return Wezel
+     */
+    public function setIdRejon(\SpsBundle\Entity\Rejon $idRejon = null)
+    {
+        $this->id_rejon = $idRejon;
+
+        return $this;
+    }
+
+    /**
+     * Get id_rejon
+     *
+     * @return \SpsBundle\Entity\Rejon 
+     */
+    public function getIdRejon()
+    {
+        return $this->id_rejon;
+    }
+
+    /**
+     * Add id_mufa
+     *
+     * @param \SpsBundle\Entity\Mufa $idMufa
+     * @return Wezel
+     */
+    public function addIdMufa(\SpsBundle\Entity\Mufa $idMufa)
+    {
+        $this->id_mufa[] = $idMufa;
+
+        return $this;
+    }
+
+    /**
+     * Remove id_mufa
+     *
+     * @param \SpsBundle\Entity\Mufa $idMufa
+     */
+    public function removeIdMufa(\SpsBundle\Entity\Mufa $idMufa)
+    {
+        $this->id_mufa->removeElement($idMufa);
+    }
+
+    /**
+     * Get id_mufa
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdMufa()
+    {
+        return $this->id_mufa;
+    }
+
+    /**
+     * Add id_kabel
+     *
+     * @param \SpsBundle\Entity\Kabel $idKabel
+     * @return Wezel
+     */
+    public function addIdKabel(\SpsBundle\Entity\Kabel $idKabel)
+    {
+        $this->id_kabel[] = $idKabel;
+
+        return $this;
+    }
+
+    /**
+     * Remove id_kabel
+     *
+     * @param \SpsBundle\Entity\Kabel $idKabel
+     */
+    public function removeIdKabel(\SpsBundle\Entity\Kabel $idKabel)
+    {
+        $this->id_kabel->removeElement($idKabel);
+    }
+
+    /**
+     * Get id_kabel
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdKabel()
+    {
+        return $this->id_kabel;
+    }
 }

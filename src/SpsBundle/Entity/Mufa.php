@@ -150,18 +150,14 @@ class Mufa{
 	protected $opis;
 
 	/**
-	 * @ORM\Column(type="float",options={"default": 18.40775371})
+	 * @ORM\Column(type="float",options={"default": 18.40775371}, nullable=false)
 	 */
 	protected $gps_n;
 	/**
-	 * @ORM\Column(type="float")
+	 * @ORM\Column(type="float", options={"default": 50.34566581}, nullable=false)
 	 */
 	protected $gps_e;
-	/**
-	 * @ORM\Column(type="integer",options={"default": 50.34566581})
-	 */
-
-
+	
     /**
      * Get id
      *

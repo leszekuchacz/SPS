@@ -14,9 +14,12 @@ class WezelRejonType extends AbstractType
 	 */
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('name', 'text')
+		$builder->add('kod', 'text')
 		->add('opis','textarea')
-		->add('rejon', 'hidden');
+		->add('rejon', 'hidden')
+		->add('name', 'text')
+		->add('gps_e', 'text')
+		->add('gps_n', 'text');
 	}
 
 	/**

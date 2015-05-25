@@ -106,35 +106,47 @@ endblock %} {% block main_opis %}
 			<td>MAPA</td>
 		
 		</tr>
+		
 		{% set i=0 %}
-		{% for wezel in wezly %}
-		
-		{% if i!=wezel.id %}
-			{% set i=wezel.id %}
+	
+		{% for wezel in wezly|sort %}
 			
-			<tr>
+			{% if i!=wezel.id %}
 				
-				<td>{{ wezel.id }}<a href=""><font size=1>(edit)</font></a></td>
-				<td>{{ wezel.name }}</td>
-				<td>{{ wezel.opis }}</td> 
+				{% set i=wezel.id %}
+			
+				<tr>
+					
+					<td>{{ wezel.id }}<a href=""><font size=1>(edit)</font></a></td>
+					<td>{{ wezel.name }}</td>
+					<td>{{ wezel.opis }}</td> 
+						<td></td>
+					
+				</tr>
+			{% endif %}
+			
+			{% if wezel.oname=='wezel' %}
+				
+				<tr>
 					<td></td>
-				
-			</tr>
-		{% endif %}
-		<tr>
-			<td></td>
-			<td>{{ wezel.mid }}-{{ wezel.mkod }}<a href=""><font size=1>(edit)</font></a></td></td>
-		   <td>{{ wezel.mopis }}</td>
-		   <td><a href="
-				
-				{{ path('SpsBundle_base_rejon_focus',
-                        { 'id': rejon.id,
-                         'id_mufa_focus': wezel.mid}) }}
-			">POKAZ</a> 	</td>
+					<td>{{ wezel.mid }}-{{ wezel.mkod }}<a href=""><font size=1>(edit)</font></a></td></td>
+				   <td>{{ wezel.mopis }}</td>
+				   <td><a href="
+						
+						{{ path('SpsBundle_base_rejon_focus',
+		                        { 'id': rejon.id,
+		                         'id_mufa_focus': wezel.mid}) }}
+					">POKAZ</a> 	
+					</td>
+				</tr>
+			
+			
+			{% endif %}
 		
+		{% else %} 
 		
-		{% else %} {% endfor %}
-		</tr>
+		{% endfor %}
+
 	</table>
 	
 	

@@ -121,6 +121,10 @@ class BaseController extends Controller {
 		
 		$wezel = $em->getRepository ( 'SpsBundle:Wezel' )
 						->getWezelFomRejon( $id);
+		$wezelAll=$em->getRepository ( 'SpsBundle:Wezel' )
+						->getAllWezlyFromRejon( $id);
+		//var_dump($wezelAll);
+		
 		$newkable = $em->getRepository ( 'SpsBundle:Kabel' )->newGetKableFromRejon ( $id,'trakt' );
 		$newKableKlienckie = $em->getRepository ( 'SpsBundle:Kabel' )->newGetKableFromRejon ( $id,'klient' );
 		
@@ -134,7 +138,7 @@ class BaseController extends Controller {
 		if(isset($id_mufa_focus)){
 			return $this->render ( 'SpsBundle:Base:rejon.html.twig', array (
 					'rejon' => $rejon,
-					'wezly' => $wezel,
+					'wezly' => $wezelAll,
 					'mufy' => $mufy,
 					'mufyK'=> $mufyKlienci,
 					'kable' => $newkable,
@@ -145,7 +149,7 @@ class BaseController extends Controller {
 		
 		return $this->render ( 'SpsBundle:Base:rejon.html.twig', array (
 				'rejon' => $rejon,
-				'wezly' => $wezel,
+				'wezly' => $wezelAll,
 				'mufy' => $mufy,
 				'mufyK'=> $mufyKlienci,
 				'kable' => $newkable,

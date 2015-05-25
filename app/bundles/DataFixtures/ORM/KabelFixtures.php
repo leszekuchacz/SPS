@@ -13,29 +13,28 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 	
 	public function load(ObjectManager $manager) {
 			
-		
-		
+		// Wezel 2
+		// prze 1
 		
 		$k1 = new Kabel();
-		$k1 -> setIdMufaStart($manager->merge($this->getReference('mk2')));
-		$k1 -> setIdMufaEnd($manager->merge($this->getReference('mk3')));
-		$k1 -> setLenght(253);
+		$k1 -> setIdMufaStart($manager->merge($this->getReference('mkp1')));
+		$k1 -> setIdMufaEnd($manager->merge($this->getReference('mk1')));
+		$k1 -> setLenght(1);
 		$k1 -> setProducent('Optix');
-	
 		$k1 -> setJ(8);
 		$k1 -> setTubs(1);
-		$k1 ->setIdKabelType($manager->merge($this->getReference('kt1')));
-		$k1 ->setIdObjectType($manager->merge($this->getReference('ot')));
+		$k1 ->setIdKabelType($manager->merge($this->getReference('kt3')));
+		$k1 ->setIdObjectType($manager->merge($this->getReference('ow')));
 		$k1 ->setIdStandard($manager->merge($this->getReference('s1')));
-		$this->setReference('wk2',$k1);
+		$this->setReference('wkp1',$k1);
 		$manager-> persist($k1);
 		
+		//kabel do mufy w wezle
 		$k1 = new Kabel();
 		$k1 -> setIdMufaStart($manager->merge($this->getReference('mk1')));
-		$k1 -> setIdMufaEnd($manager->merge($this->getReference('mk2')));
+		$k1 -> setIdMufaEnd($manager->merge($this->getReference('mw')));
 		$k1 -> setLenght(254);
 		$k1 -> setProducent('Teodor');
-	
 		$k1 -> setJ(8);
 		$k1 -> setTubs(1);
 		$k1 ->setIdKabelType($manager->merge($this->getReference('kt1')));
@@ -46,25 +45,71 @@ class  KabelFixtures extends AbstractFixture implements OrderedFixtureInterface 
 		
 		
 		
-		
+		// Wezel 1
+		// prze 1
 		$k1 = new Kabel();
-		$k1 -> setIdMufaStart($manager->merge($this->getReference('mw')));
+		$k1 -> setIdMufaStart($manager->merge($this->getReference('mkp2')));
+		$k1 -> setIdMufaEnd($manager->merge($this->getReference('mk2')));
+		$k1 -> setLenght(1);
+		$k1 -> setProducent('Optix');
+		$k1 -> setJ(8);
+		$k1 -> setTubs(1);
+		$k1 ->setIdKabelType($manager->merge($this->getReference('kt3')));
+		$k1 ->setIdObjectType($manager->merge($this->getReference('ow')));
+		$k1 ->setIdStandard($manager->merge($this->getReference('s1')));
+		$this->setReference('wkp2',$k1);
+		$manager-> persist($k1);
+		
+		// kabel do mufy wezla
+		$k1 = new Kabel();
+		$k1 -> setIdMufaStart($manager->merge($this->getReference('mk2')));
+		$k1 -> setIdMufaEnd($manager->merge($this->getReference('mw')));
+		$k1 -> setLenght(253);
+		$k1 -> setProducent('Optix');
+		$k1 -> setJ(8);
+		$k1 -> setTubs(1);
+		$k1 ->setIdKabelType($manager->merge($this->getReference('kt1')));
+		$k1 ->setIdObjectType($manager->merge($this->getReference('ot')));
+		$k1 ->setIdStandard($manager->merge($this->getReference('s1')));
+		$this->setReference('wk2',$k1);
+		$manager-> persist($k1);
+		
+		// prze 2
+		$k1 = new Kabel();
+		$k1 -> setIdMufaStart($manager->merge($this->getReference('mkp3')));
+		$k1 -> setIdMufaEnd($manager->merge($this->getReference('mk2')));
+		$k1 -> setLenght(1);
+		$k1 -> setProducent('Optix');
+		$k1 -> setJ(8);
+		$k1 -> setTubs(1);
+		$k1 ->setIdKabelType($manager->merge($this->getReference('kt3')));
+		$k1 ->setIdObjectType($manager->merge($this->getReference('ow')));
+		$k1 ->setIdStandard($manager->merge($this->getReference('s1')));
+		$this->setReference('wkp3',$k1);
+		$manager-> persist($k1);
+		
+		// druga kabel do wezla 
+		$k1 = new Kabel();
+		$k1 -> setIdMufaStart($manager->merge($this->getReference('mk2')));
 		$k1 -> setIdMufaEnd($manager->merge($this->getReference('m1')));
 		$k1 -> setLenght(358);
-		$k1 -> setProducent('Optix');
-
+		$k1 -> setProducent('Optix');		
 		$k1 -> setJ(8);
 		$k1 -> setTubs(1);
 		$k1 ->setIdKabelType($manager->merge($this->getReference('kt1')));
 		$k1 ->setIdObjectType($manager->merge($this->getReference('ot')));
 		$k1 ->setIdStandard($manager->merge($this->getReference('s1')));
 		$this->setReference('wk',$k1);
-		
 		$manager-> persist($k1);
 		
-
+			
 		
 		
+		
+		
+		
+		
+	
 		
 		
 		$k1 = new Kabel();

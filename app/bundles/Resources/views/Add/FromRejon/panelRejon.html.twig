@@ -8,7 +8,8 @@
 <h2> {{ rejon.nazwa }} </h2> </a>{% endblock %}
 {% block body %}
 {{ render (controller('SpsBundle:Map:show',{'id' : rejon.id })) }}
-<h2> Dodaj nowy wezel: </h2>
+	
+<h2> Dodaj nową przelacznice do wezla: </h2>
 <table class=greenTable>
 
 <tr>
@@ -18,7 +19,7 @@
 
 <form action="{{ path('SpsBundle_add_object_to_rejon_post',
 							  	{'id': rejon.id,
-                         'type': 'wezel'})}}"
+                         'type': 'panel'})}}"
 							 	method="post"  {{ form_enctype(form) }}>
 						
 						<tr>
@@ -26,14 +27,33 @@
 							<td>{{ nextid }}</td>
 						</tr>
 						<tr>
-							<td>Pełna nazwa</td>
+						
+							<td>Object type</td>
 							<td> 	
-								
-    							{{ form_errors(form.name) }}
- 							   {{ form_widget(form.name) }}
+									wezel
  						  </td>
  						</tr>
-						<tr>
+ 						
+ 						<tr>
+						
+							<td>Wezel</td>
+							<td> 	
+								
+    							{{ form_errors(form.wezel) }}
+ 							   {{ form_widget(form.wezel) }}
+ 						  </td>
+ 						</tr>
+ 						<tr>
+						
+							<td>Rodzaj przlaczycy</td>
+							<td> 	
+    							{{ form_errors(form.j) }}
+ 							   {{ form_widget(form.j) }}
+ 						  </td>
+ 						</tr>
+						
+ 						<tr>
+						
 							<td>KOD</td>
 							<td> 	
 								
@@ -41,32 +61,26 @@
  							   {{ form_widget(form.kod) }}
  						  </td>
  						</tr>
- 						<tr>	
- 						<td> OPIS</td>   
- 							  	<td> 	
-							
+ 						<tr>
+						
+							<td>Opis</td>
+							<td> 	
+								
     							{{ form_errors(form.opis) }}
- 							   {{ form_widget(form.opis) }} 
- 							   </td>
- 						</tr> 
+ 							   {{ form_widget(form.opis) }}
+ 						  </td>
+ 						</tr>	
+ 	
  						<tr>	
- 							<td>	GPS_E <a href="http://www.mapcoordinates.net/en"> (default: 50.34566581)</a></td>   
- 							  	<td> 	
-									
-    							{{ form_errors(form.gps_e) }}
- 							   {{ form_widget(form.gps_e) }} 
- 							   </td>
- 						</tr> 	   
- 						<tr>	
- 							<td> GPS_N 	<a href="http://www.mapcoordinates.net/en">(default: 18.40775371)</a></td>   
+ 							<td> Standard</td>   
  							  	<td> 	
 								
-    							{{ form_errors(form.gps_n) }}
- 							   {{ form_widget(form.gps_n) }} 
+    							{{ form_errors(form.standard) }}
+ 							   {{ form_widget(form.standard) }} 
+ 							   
  							   </td>
  						</tr> 	   
- 							   
- 							
+ 						 	
     				
 							
 							

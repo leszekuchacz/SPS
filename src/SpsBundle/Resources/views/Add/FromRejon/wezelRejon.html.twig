@@ -7,7 +7,7 @@
 
 <h2> {{ rejon.nazwa }} </h2> </a>{% endblock %}
 {% block body %}
-
+{{ render (controller('SpsBundle:Map:show',{'id' : rejon.id })) }}
 <h2> Dodaj nowy wezel: </h2>
 <table class=greenTable>
 
@@ -25,14 +25,20 @@
 							<td>ID</td>
 							<td>{{ nextid }}</td>
 						</tr>
-						
 						<tr>
-						
-							<td>KOD</td>
+							<td>Pełna nazwa</td>
 							<td> 	
 								
     							{{ form_errors(form.name) }}
  							   {{ form_widget(form.name) }}
+ 						  </td>
+ 						</tr>
+						<tr>
+							<td>KOD</td>
+							<td> 	
+								
+    							{{ form_errors(form.kod) }}
+ 							   {{ form_widget(form.kod) }}
  						  </td>
  						</tr>
  						<tr>	
@@ -43,6 +49,22 @@
  							   {{ form_widget(form.opis) }} 
  							   </td>
  						</tr> 
+ 						<tr>	
+ 							<td>	GPS_E <a href="http://www.mapcoordinates.net/en"> (default: 50.34566581)</a></td>   
+ 							  	<td> 	
+									
+    							{{ form_errors(form.gps_e) }}
+ 							   {{ form_widget(form.gps_e) }} 
+ 							   </td>
+ 						</tr> 	   
+ 						<tr>	
+ 							<td> GPS_N 	<a href="http://www.mapcoordinates.net/en">(default: 18.40775371)</a></td>   
+ 							  	<td> 	
+								
+    							{{ form_errors(form.gps_n) }}
+ 							   {{ form_widget(form.gps_n) }} 
+ 							   </td>
+ 						</tr> 	   
  							   
  							
     				

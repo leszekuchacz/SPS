@@ -49,6 +49,7 @@ class TypeFixtures extends AbstractFixture implements OrderedFixtureInterface {
 		$mt -> setIdObjectType($manager->merge($this->getReference('ow')));
 		$mt->setName('Przełącznica światłowodowa 24-SC');
 		$mt->setTag('prze24');
+		$mt->setValue(24);
 	
 		$manager->persist($mt);
 		$this->addReference('mt1',$mt);
@@ -57,13 +58,14 @@ class TypeFixtures extends AbstractFixture implements OrderedFixtureInterface {
 		$mt -> setIdObjectType($manager->merge($this->getReference('ow')));
 		$mt->setName('Przełącznica światłowodowa 48-SC');
 		$mt->setTag('prze48');
+		$mt->setValue(48);
 		$manager->persist($mt);
 		$this->addReference('mt2',$mt);
 		
 		$mt =new MufaTyp();
 		$mt->setName('Przełącznica światłowodowa 96-SC');
 		$mt->setTag('prze96');
-
+		$mt -> setValue(96);
 		$mt -> setIdObjectType($manager->merge($this->getReference('ow')));
 		$manager->persist($mt);
 		$this->addReference('mt3',$mt);
@@ -71,7 +73,7 @@ class TypeFixtures extends AbstractFixture implements OrderedFixtureInterface {
 
 		$mt =new MufaTyp();
 		$mt->setName('Mala biała mufa GPON  8-SC');
-		
+		$mt->setValue(8);
 		$mt -> setIdObjectType($manager->merge($this->getReference('ot')));
 		$mt->setTag('gpon8');
 		$manager->persist($mt);
@@ -81,6 +83,7 @@ class TypeFixtures extends AbstractFixture implements OrderedFixtureInterface {
 		$mt->setName('Duża biala mufa GPON  16-SC');
 		$mt -> setIdObjectType($manager->merge($this->getReference('ot')));
 		$mt->setTag('gpon16');
+		$mt->setValue(16);
 		$manager->persist($mt);
 		$this->addReference('mt5',$mt);
 		
@@ -115,6 +118,16 @@ class TypeFixtures extends AbstractFixture implements OrderedFixtureInterface {
 		$this->addReference('mt9',$mt);
 		
 		
+		$mt =new MufaTyp();
+		$mt->setName('Studnia SK1 mała ');
+		$mt -> setIdObjectType($manager->merge($this->getReference('ow')));
+		$mt->setTag('sk1');
+		$manager->persist($mt);
+		$this->addReference('mt10',$mt);
+		
+		
+		
+		
 		$mk =new KabelTyp();
 		$mk->setName('Kabel jednomodowy');
 		$mk->setTag('jedno');
@@ -129,28 +142,18 @@ class TypeFixtures extends AbstractFixture implements OrderedFixtureInterface {
 		$manager->persist($mk);
 		$this->addReference('kt2',$mk);
 		
+		
 		$mk =new KabelTyp();
-		$mk->setName('Splitter 1x2');
-		$mk->setTag('split1x2');
-		$mk->setValue(2);
+		$mk->setName('Pigtail');
+		$mk->setTag('pig');
+		$mk->setValue(1);
 		$manager->persist($mk);
 		$this->addReference('kt3',$mk);
 		
 		
-		$mk =new KabelTyp();
-		$mk->setName('Splitter 1x8');
-		$mk->setTag('split1x8');
-		$mk->setValue(2);
-		$manager->persist($mk);
-		$this->addReference('kt4',$mk);
 		
 		
-		$mk =new KabelTyp();
-		$mk->setName('Splitter 1x16');
-		$mk->setTag('split1x16');
-		$mk->setValue(2);
-		$manager->persist($mk);
-		$this->addReference('kt5',$mk);
+		
 		
 		
 		

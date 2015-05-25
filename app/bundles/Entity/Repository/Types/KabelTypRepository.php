@@ -27,6 +27,18 @@ class KabelTypRepository extends EntityRepository
 		return $qb->getResult();
 	}
 	
+	public function getKabelTyp($tag){
+	
+		$qb = $this->getEntityManager()
+		->createQuery(
+				'SELECT k.name, k.id
+				FROM SpsBundle:KabelTyp k
+				WHERE k.tag =:tag'
+	
+		)->setParameter('tag', $tag);
+	
+		return $qb->getResult();
+	}
 	
 	
 }

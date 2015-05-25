@@ -20,19 +20,83 @@ class MufaFixtures extends AbstractFixture implements OrderedFixtureInterface {
 		
 		
 		
-		
+		// Wezel -2 
 		$w1 = new Mufa();
 		$w1 -> setIdRejon($manager->merge($this->getReference('r1')));
-		$w1 -> setKod('WKOZIEL');
-		$w1 -> setOpis('Przelacznica 8-SC w strone Radomskiej ');
+		$w1 -> setKod('WEZELSOPICKA');
+		$w1 -> setOpis('Skrzynia elektryczna, wezel kozielska ');
 		$w1 -> setGpsE(50.328107);
 		$w1 -> setGpsN(18.572795);
 		$w1 ->setIdMufaType($manager->merge($this->getReference('mt3')));
-		$w1 ->setIdObjectType($manager->merge($this->getReference('ow')));
+		$w1 ->setIdObjectType($manager->merge($this->getReference('ot')));
 		$w1 ->setIdWezel($manager->merge($this->getReference('wez2')));
 		$manager->persist($w1);
 		$this->addReference('mk1', $w1);
 	
+		// prze
+		$w1 = new Mufa();
+		$w1 -> setIdRejon($manager->merge($this->getReference('r1')));
+		$w1 -> setKod('WSOP-PANEL-8SC');
+		$w1 -> setOpis('Przelacznica 8-SC w strone Radomskiej ');
+		$w1 -> setGpsE(50.328107);
+		$w1 -> setGpsN(18.572795);
+		$w1 ->setIdMufaType($manager->merge($this->getReference('mt6')));
+		$w1 ->setIdObjectType($manager->merge($this->getReference('ow')));
+		$w1 ->setIdWezel($manager->merge($this->getReference('wez2')));
+		$manager->persist($w1);
+		$this->addReference('mkp1', $w1);
+		
+		
+		
+		
+		
+		// Wezel 1
+		
+		
+		// mufa main
+		$w1 = new Mufa();
+		$w1 -> setIdRejon($manager->merge($this->getReference('r1')));
+		$w1 -> setKod('WEZELKOZIELSKA');
+		$w1 -> setOpis('skrzynia elektryczna, wezel radomska');
+		$w1 -> setGpsE(50.328774);
+		$w1 -> setGpsN(18.579945);
+		$w1 ->setIdMufaType($manager->merge($this->getReference('mt2')));
+		$w1 ->setIdObjectType($manager->merge($this->getReference('ot')));
+		$w1 ->setIdWezel($manager->merge($this->getReference('wez1')));
+		$manager->persist($w1);
+		$this->addReference('mk2', $w1);
+		
+		
+		
+		// prze
+		$w1 = new Mufa();
+		$w1 -> setIdRejon($manager->merge($this->getReference('r1')));
+		$w1 -> setKod('WRADKOZ-PANEL-8SC');
+		$w1 -> setOpis('Przelacznica 8-SC w strone wezla kozielska ');
+		$w1 -> setGpsE(50.328774);
+		$w1 -> setGpsN(18.579945);
+		$w1 ->setIdMufaType($manager->merge($this->getReference('mt2')));
+		$w1 ->setIdObjectType($manager->merge($this->getReference('ow')));
+		$w1 ->setIdWezel($manager->merge($this->getReference('wez1')));
+		$manager->persist($w1);
+		$this->addReference('mkp3', $w1);
+		
+	
+
+		$w1 = new Mufa();
+		$w1 -> setIdRejon($manager->merge($this->getReference('r1')));
+		$w1 -> setKod('WRAD-PANEL-8SC');
+		$w1 -> setOpis('Przelacznica 8-SC przeznaczona na okolice ulicy Radomskiej');
+		$w1 -> setGpsE(50.328774);
+		$w1 -> setGpsN(18.579945);
+		$w1 ->setIdMufaType($manager->merge($this->getReference('mt1')));
+		$w1 ->setIdObjectType($manager->merge($this->getReference('ow')));
+		$w1 ->setIdWezel($manager->merge($this->getReference('wez1')));
+		$manager->persist($w1);
+		$this->addReference('mkp2', $w1);
+		
+	
+	// Mufy traktowe Rejon 1
 		$w1 = new Mufa();
 		$w1 -> setIdRejon($manager->merge($this->getReference('r1')));
 		$w1 -> setIdObjectType($manager->merge($this->getReference('ot')));
@@ -42,36 +106,8 @@ class MufaFixtures extends AbstractFixture implements OrderedFixtureInterface {
 		$w1 -> setGpsN(18.575354);
 		$w1 ->setIdMufaType($manager->merge($this->getReference('mt3')));
 		$w1 ->setIdObjectType($manager->merge($this->getReference('ot')));
-	   $manager->persist($w1);
-	   $this->addReference('mk2', $w1);
-		
-		
-		
-		$w1 = new Mufa();
-		$w1 -> setIdRejon($manager->merge($this->getReference('r1')));
-		$w1 -> setKod('WSOPKOZ');
-		$w1 -> setOpis('Przelacznica 8-SC strone wezla kozielska ');
-		$w1 -> setGpsE(50.328774);
-		$w1 -> setGpsN(18.579945);
-		$w1 ->setIdMufaType($manager->merge($this->getReference('mt2')));
-		$w1 ->setIdObjectType($manager->merge($this->getReference('ow')));
-		$w1 ->setIdWezel($manager->merge($this->getReference('wez1')));
 		$manager->persist($w1);
-		$this->addReference('mk3', $w1);
-		
-	
-
-		$w1 = new Mufa();
-		$w1 -> setIdRejon($manager->merge($this->getReference('r1')));
-		$w1 -> setKod('WSOPOC1');
-		$w1 -> setOpis('Przelacznica 24-SC przeznaczona na okolice ulicy Radomskiej');
-		$w1 -> setGpsE(50.328774);
-		$w1 -> setGpsN(18.579945);
-		$w1 ->setIdMufaType($manager->merge($this->getReference('mt1')));
-		$w1 ->setIdObjectType($manager->merge($this->getReference('ow')));
-		$w1 ->setIdWezel($manager->merge($this->getReference('wez1')));
-		$manager->persist($w1);
-	
+		$this->addReference('mw', $w1);
 		
 
 		
@@ -86,7 +122,7 @@ class MufaFixtures extends AbstractFixture implements OrderedFixtureInterface {
 	//	$m1 -> setIdType($manager->merge($this->getReference('t4')));
 		$m1 ->setIdMufaType($manager->merge($this->getReference('mt5')));
 		$m1 ->setIdObjectType($manager->merge($this->getReference('ot')));
-		
+	
 		
 		$manager->persist($m1);
 		
@@ -295,7 +331,7 @@ class MufaFixtures extends AbstractFixture implements OrderedFixtureInterface {
 		$this->addReference('m4', $m4);
 		$this->addReference('m5', $m5);
 		$this->addReference('m6', $m6);
-		$this->addReference('mw', $w1);
+	
 		
 		$this->addReference('r2m1', $r2m1);
 		$this->addReference('r2m2', $r2m2);

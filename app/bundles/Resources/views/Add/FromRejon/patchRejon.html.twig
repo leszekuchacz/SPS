@@ -1,0 +1,131 @@
+{%  extends 'SpsBundle::layout.html.twig' %}
+
+{% block main_opis %}	
+
+
+<a href="{{ path('SpsBundle_base_rejon', { 'id': rejon.id}) }}">
+
+<h2> {{ rejon.nazwa }} </h2> </a>{% endblock %}
+{% block body %}
+{{ render (controller('SpsBundle:Map:show',{'id' : rejon.id })) }}
+	
+<h2> Dodaj nowy kabel traktowy: </h2>
+<table class=greenTable>
+
+<tr>
+	<td> Zmienna </td>
+	<td> Wartosc </td>
+</tr>
+
+<form action="{{ path('SpsBundle_add_object_to_rejon_post',
+							  	{'id': rejon.id,
+                         'type': 'kabel'})}}"
+							 	method="post"  {{ form_enctype(form) }}>
+						
+						<tr>
+							<td>ID</td>
+							<td>{{ nextid }}</td>
+						</tr>
+						<tr>
+						
+							<td>Object type</td>
+							<td> 	
+									wezel
+ 						  </td>
+ 						</tr>
+ 						<tr>
+						
+							<td> Wezel </td>
+							<td> 	
+									true
+ 						  </td>
+ 						</tr>
+ 						<tr>
+						
+							<td>OD MUFY</td>
+							<td> 	
+								
+    							{{ form_errors(form.od) }}
+ 							   {{ form_widget(form.od) }}
+ 						  </td>
+ 						</tr>
+ 						<tr>
+						
+							<td>OD MUFY</td>
+							<td> 	
+								
+    							{{ form_errors(form.do) }}
+ 							   {{ form_widget(form.do) }}
+ 						  </td>
+ 						</tr>
+						<tr>
+						
+							<td>Dlugosc kabla</td>
+							<td> 	
+								
+    							{{ form_errors(form.lenght) }}
+ 							   {{ form_widget(form.lenght) }}
+ 						  </td>
+ 						</tr>
+ 						
+ 						<tr>	
+ 							<td> Ilosc wlokien </td>   
+ 							  	<td> 	
+							
+    							{{ form_errors(form.j) }}
+ 							   {{ form_widget(form.j) }} 
+ 							   </td>
+ 						</tr> 
+ 						<tr>	
+ 							<td> Ilosc tub</td>   
+ 							  	<td> 	
+									
+    							{{ form_errors(form.tubs) }}
+ 							   {{ form_widget(form.tubs) }} 
+ 							   </td>
+ 						</tr> 	  
+ 						<tr>	
+ 							<td> Producent</td>   
+ 							  	<td> 	
+								
+    							{{ form_errors(form.producent) }}
+ 							   {{ form_widget(form.producent) }} 
+ 							   
+ 							   </td>
+ 						</tr> 
+ 						
+ 						 
+ 						<tr>	
+ 							<td> Standard</td>   
+ 							  	<td> 	
+								
+    							{{ form_errors(form.standard) }}
+ 							   {{ form_widget(form.standard) }} 
+ 							   
+ 							   </td>
+ 						</tr> 	   
+ 						<tr>	
+ 							<td> Typ kabla</td>   
+ 							  	<td> 	
+									
+    							{{ form_errors(form.kabeltype) }}
+ 							   {{ form_widget(form.kabeltype) }} 
+    							
+ 							   </td>
+ 						</tr> 	
+    				
+							
+							
+						
+							<td>    {{ form_widget(form.rejon,{value : rejon.id}) }}   	</td>
+					 	
+    						
+    					
+							<td class="printblock">  <input type="submit" value="Dodaj" /> </td>
+							{{ form_row(form._token) }}
+							</td>
+						</form>
+</tr>
+
+</table>
+{% endblock %}

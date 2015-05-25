@@ -34,7 +34,7 @@ class Wezel
 	protected $id;
 	/**
 	 * @ORM\ManyToOne(targetEntity="Rejon", inversedBy="id_wezel")
-	 * @ORM\JoinColumn(name="id_rejon", referencedColumnName="id")
+	 * @ORM\JoinColumn(name="id_rejon", referencedColumnName="id")	 
 	 */
 	protected $id_rejon;
 	
@@ -42,6 +42,8 @@ class Wezel
 	 * @ORM\OneToMany(targetEntity="Mufa", mappedBy="id_wezel")
 	 */
 	protected $id_mufa;
+	
+	
 	/**
 	 * @ORM\OneToMany(targetEntity="Kabel", mappedBy="id_wezel")
 	 */
@@ -200,5 +202,38 @@ class Wezel
     public function getIdKabel()
     {
         return $this->id_kabel;
+    }
+
+    /**
+     * Add id_panel
+     *
+     * @param \SpsBundle\Entity\Mufa $idPanel
+     * @return Wezel
+     */
+    public function addIdPanel(\SpsBundle\Entity\Mufa $idPanel)
+    {
+        $this->id_panel[] = $idPanel;
+
+        return $this;
+    }
+
+    /**
+     * Remove id_panel
+     *
+     * @param \SpsBundle\Entity\Mufa $idPanel
+     */
+    public function removeIdPanel(\SpsBundle\Entity\Mufa $idPanel)
+    {
+        $this->id_panel->removeElement($idPanel);
+    }
+
+    /**
+     * Get id_panel
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdPanel()
+    {
+        return $this->id_panel;
     }
 }
